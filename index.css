@@ -1,0 +1,686 @@
+* {
+    background-color: #222;
+}
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/Oswald-VariableFont_wght.ttf')
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+h1 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    color: rgb(67, 90, 60);
+    text-align: center;
+}
+
+.wholePage {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: inline-block;
+}
+
+.bannerSection {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: 70px;
+    width: 100%;
+}
+
+.bannerWrapper {
+    margin: 0px;
+    padding: 0px;
+    background-color: rgb(67, 90, 60);
+    height: 70px;
+    width: 100%;
+}
+
+.bannerWrapper a {
+    float: left;
+    text-decoration: none;
+    height: 70px;
+    width: 110px;
+    background-color: rgb(35, 46, 32);
+    color: rgb(67, 90, 60);
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    display: none;
+}
+
+.bannerWrapper a:hover {
+    background-color: rgb(110, 148, 101);
+    color: rgb(35, 46, 32);
+}
+
+.bannerWrapper h1 {
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    font-size: 40px;
+    background-color: inherit;
+    width: inherit;
+    color: black;
+}
+
+.bannerWrapper h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    background-color: transparent;
+    display: none;
+}
+
+/* This defines the horizontal wrapper for the Intro*/
+.introSection {
+    margin-top: 20px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.introWrapper {
+    display: inline-flex;
+    flex-direction: row;
+    background-color: #555;
+    margin: 0px;
+    padding: 0px;
+    height: 180px;
+    width: 720px;
+    border: solid 5px black;
+    border-radius: 20px;
+}
+
+.introWrapper img {
+    width: 320px;
+    border-radius: 15px 0px 0px 15px;
+}
+
+.introWrapper p {
+    display: flex;
+    text-align: justify;
+    align-items: center;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    color: #222;
+    background-color: #555;
+    width: 90%;
+    height: 180px;
+    margin: 0px;
+    padding: 0px 20px 0px 20px;
+    border-radius: 0px 15px 15px 0px;
+}
+
+/* This defines the horizontal wrapper for the buttons*/
+.buttonSection {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.buttonSection a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    height: 60px;
+    color: black;
+    background-color: #555;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    font-size: 28px;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 10px 0px 10px;
+    border-radius: 15px;
+    border: solid 2px black;
+}
+
+.buttonSection a:hover {
+    background-color: rgb(35, 46, 32);
+    color: rgb(67, 90, 60);
+    border-color: rgb(67, 90, 60);
+}
+
+/*Rules Modal Box*/
+#rulesButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#rulesButton:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#rulesButton > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#rulesButton h1 {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+#rulesButton p {
+    text-align: justify;
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#rulesButton a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+
+}
+
+#rulesButton a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+#releaseNotesButton {
+    margin: 0px 0px 10px 0px;
+    padding: 2px 10px 2px 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+}
+
+#releaseNotesButton a {
+    margin: 0px 10px 0px 10px;
+    width: 130px;
+    height: relative;
+    text-align: center;
+}
+
+#releaseNotesButton a:hover {
+    background-color: rgb(182, 76, 76);
+}
+/*Release Notes*/
+#releaseNotes {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#releaseNotes:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#releaseNotes > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#releaseNotes h1 {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+#releaseNotes p {
+    text-align: justify;
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#releaseNotes a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+
+}
+
+#releaseNotes a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+/*Future Features*/
+#futureFeatures {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#futureFeatures:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#futureFeatures > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#futureFeatures h1 {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+#futureFeatures p {
+    text-align: justify;
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#futureFeatures a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+
+}
+
+#futureFeatures a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+#futureFeatures ul {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    color: rgb(182, 76, 76);
+    list-style: none;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#futureFeatures li::before {
+    margin: 0px;
+    padding: 0px;
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: grey; /* Change the color */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em;
+      
+}
+
+/*Legal Modal Box*/
+#legalButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#legalButton:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#legalButton > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#legalButton h1 {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+#legalButton p {
+    text-align: justify;
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#legalButton a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#legalButton a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+/*About the Maker Modal Box*/
+#makerButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#makerButton:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#makerButton > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 400px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#makerButton h1 {
+    margin: 0px 0px 20px 0px;
+    padding: 0px;
+}
+
+#makerButton p {
+    text-align: justify;
+    margin: 20px 10px 20px 10px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+#makerButton a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#makerButton a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+#makerButton img {
+    margin: 0px;
+    padding: 0px;
+    width: 360px;
+    height: relative;
+    border: 1px solid black;
+}
+
+/*Hero Modal Box*/
+#heroButton {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    z-index: 99999;
+}
+
+#heroButton:target {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#heroButton > div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 540px;
+    height: relative;
+    position: relative;
+    margin: 18px auto;
+    padding: 20px;
+    border: 2px solid black;
+    background-color: #222;
+    border-radius: 10px;
+}
+
+#heroButton a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#heroButton a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+.heroIntro {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+}
+
+.heroIntro h1 {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+}
+
+.heroIntro p {
+    text-align: justify;
+    margin: 0px;
+    padding: 0px;
+    color: #777;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+}
+
+.cardWrapper {
+    margin: 0px 0px 14px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    height: relative;
+    width: 100%;
+}
+
+.heroWrapper {
+    text-decoration: none;
+    width: 200px;
+    height: 260px;
+    margin: 10px;
+    padding: 0px;
+    border: solid 5px black;
+    border-radius: 10px;
+    background-color: grey;
+    display: flex;
+}
+
+.heroWrapper a {
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    height: relative;
+    width: relative;
+}
+
+.heroWrapper a:hover {
+    background-color: rgb(67, 90, 60);
+}
+
+.hero {
+    padding: 0px;
+    margin: 0px;
+    background-color: inherit;
+    border-radius: inherit;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero h3 {
+    font-family: 'Roboto condensed';
+    font-weight: 700;
+    font-size: 20px;
+    color: black;
+    text-align: center;
+    padding: 1px 0px 3px 0px;
+    margin: 0px;
+    border-radius: inherit;
+    background-color: inherit;
+}
+
+.hero p {
+    font-family: 'Roboto condensed';
+    font-weight: 500;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    margin: 4px 4px 0px 4px;
+    padding: 0px 4px 0px 4px;
+    width: relative;
+    height: relative;
+    background-color: inherit;
+}
+
+.hero img {
+    display: flex;
+    width: 160px;
+    height: 90px;
+    border: solid 3px black;
+    border-radius: 5px;
+    position: relative;
+    padding: 0px;
+    margin: 0px;
+}
+
+
+.footer {
+    color: #555;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: relative;
+    text-align: center;
+    font-family: 'Roboto condensed';
+    font-size: 14px;
+}

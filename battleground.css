@@ -1,0 +1,716 @@
+* {
+    background-color: #222;
+}
+
+@font-face {
+    font-family: 'Oswald';
+    src: url('fonts/Oswald-VariableFont_wght.ttf')
+}
+
+body {
+    margin: 0px;
+    padding: 0px;
+}
+
+.wholePage {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* This section provides styling for placeholder text */
+
+.placeHolder {
+    background-color: transparent;
+    display: inline-flex;
+    justify-content: center;
+    margin: 90px 0px 100px 0px;
+    width: 100%;
+
+}
+
+.placeHolder h2 {
+    margin: 0px;
+    padding: 10px;
+    height: 40px;
+    width: 120px;
+    font-family: 'Roboto condensed';
+    font-weight: bold;
+    font-size: 26px;
+    color: whitesmoke;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 10px;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center; /*aligns items in div tag vertically*/
+}
+
+/* This section provides the header and nav menu */
+.bannerSection {
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    height: 70px;
+    width: 100%;
+}
+
+.bannerWrapper {
+    margin: 0px;
+    padding: 0px;
+    background-color: black;
+    height: 70px;
+    width: 100%;
+}
+
+.bannerWrapper a {
+    float: left;
+    text-decoration: none;
+    height: 70px;
+    width: 110px;
+    background-color:black;
+    color: #555;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    padding: 0px;
+    margin: 0px;
+    text-align: center;
+    border-right: 1px solid #555;
+}
+
+.bannerWrapper a:hover {
+    background-color: #555;
+    color: black;
+}
+
+.bannerWrapper h1 {
+    margin: 0px;
+    padding: 10px 0px 10px 0px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    font-size: 40px;
+    background-color: inherit;
+    width: inherit;
+    color: #555;
+}
+
+.bannerWrapper h2 {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    background-color: transparent;
+}
+
+/*This section holds the hero, action buttons, and action cards */
+.heroSection {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: inline-flex;
+    justify-content: center;
+}
+
+.heroWrapper {
+    margin: 20px 0px 0px 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.heroCard {
+    margin: 0px;
+    padding: 0px;
+}
+
+.heroCard a {
+    text-decoration: none;
+    width: 180px;
+    height: 240px;
+    padding: 0px;
+    border: 5px solid black;
+    border-radius: 10px;
+    margin: 0px 10px 0px 10px;
+    background-color: grey;
+    display: inline-flex;
+}
+
+.heroCard a:hover {
+    border-color: whitesmoke;
+
+}
+
+.heroWrapper a:hover {
+    background-color: #333;
+
+}
+
+.hero {
+    padding: 0px;
+    background-color: inherit;
+    border-radius: inherit;
+
+}
+
+.heroWrapper:hover {
+    color: whitesmoke;
+}
+
+.hero h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: black;
+    text-align: center;
+    padding: 1px 0px 3px 0px;
+    margin: 0px;
+    border-radius: inherit;
+    background-color: inherit;
+}
+
+.hero p {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    margin: 0px;
+    padding: 0px 8px 0px 8px;
+    background-color: inherit;
+}
+
+.hero img {
+    width: 160px;
+    height: 90px;
+    border: solid 3px black;
+    border-radius: 5px;
+    position: relative;
+    left: 8px;
+    margin-top: 8px;
+}
+
+/*Action Card Styling*/
+
+.actionCard1 {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+.actionCard1 a {
+    background-image: url('img/ac_bg2.png');
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    width: 180px;
+    height: 240px;
+    padding: 0px;
+    border: solid 5px black;
+    border-radius: 10px;
+    margin: 0px 10px 0px 10px;
+    display: inline-block;
+}
+
+.actionCard1 a:hover {
+    background-color: black;
+    background-image: none;
+    border-color: whitesmoke;
+}
+
+.actionCard1 h3 {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    padding: 1px 0px 3px 0px;
+    margin: 0px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: transparent;
+    color: whitesmoke;
+    display: block;
+}
+
+.actionCard1 p {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 14px;
+    color: whitesmoke;
+    text-align: left;
+    margin: 8px 8px 0px 8px;
+    padding: 0px 4px 0px 4px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: block;
+}
+
+.actionCard1 img {
+    width: 160px;
+    height: 90px;
+    border: solid 3px black;
+    border-radius: 5px;
+    position: relative;
+    left: 8px;
+    margin: 0px;
+}
+
+.actionCard2 {
+    margin: 0px;
+    padding: 0px;
+}
+
+.actionCard2 a {
+    background-image: url('img/ac_bg2.png');
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    width: 180px;
+    height: 240px;
+    padding: 0px;
+    border: solid 5px black;
+    border-radius: 10px;
+    margin: 0px 10px 0px 10px;
+    display: inline-block;
+}
+
+.actionCard2 a:hover {
+    background-color:black;
+    background-image: none;
+    border-color: whitesmoke;
+}
+
+.actionCard2 h3 {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    padding: 1px 0px 3px 0px;
+    margin: 0px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: transparent;
+    color: whitesmoke;
+    display: block;
+}
+
+.actionCard2 p {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 14px;
+    color: whitesmoke;
+    text-align: left;
+    margin: 8px 8px 0px 8px;
+    padding: 0px 4px 0px 4px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 5px;
+    display: block;
+}
+
+.actionCard2 img {
+    width: 160px;
+    height: 90px;
+    border: solid 3px black;
+    border-radius: 5px;
+    position: relative;
+    left: 8px;
+    margin: 0px;
+}
+
+/*Button Section*/
+
+.buttonSection {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.buttonWrapper {
+    margin: 10px 0px 10px 0px;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+    height: 70px;
+    display: inline-flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    background-color: #333;
+}
+
+.buttonWrapper a {
+    padding: 0px;
+    border: solid 5px #222;
+    border-radius: 10px;
+    margin: 0px 10px 0px 10px;
+    display: inline-flex;
+    color: grey;
+    background-color: #222;
+    text-decoration: none;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 180px;
+    height: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
+    font-size: 30px;
+}
+
+.buttonWrapper a:hover {
+    color: maroon;
+    background-color: black;
+    border-color: black;
+}
+
+/*This is the boss and minion section*/
+
+.enemySection {
+    margin-top: 10px;
+    padding: 0px;
+    width: 100%;
+    height: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.enemyWrapper {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    width: 100%;
+    height: auto;
+}
+
+.enemyCard {
+    margin: 0px 10px 0px 10px;
+    padding: 0px;
+    background-color: #333;
+    border-radius: 10px;
+    width: 190px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+}
+
+.enemyCard a {
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    color: whitesmoke;
+    background-color: black;
+    font-family: 'Roboto condensed';
+    font-weight: bold;
+    font-size: 26px;
+    width: inherit;
+    height: inherit;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.enemyCard a:hover {
+    background-color: #333;
+}
+
+#enemyCard {
+    background-color: transparent;
+    margin: 0px;
+    padding: 0px;
+    border: 5px solid black;
+    border-radius: inherit;
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#enemyCard img {
+    width: 160px;
+    height: 90px;
+    border: solid 3px black;
+    border-radius: 5px;
+    margin: 8px 0px 4px 0px;
+    padding: 0px;
+    
+}
+
+#enemyCard h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 700;
+    font-size: 18px;
+    color: grey;
+    text-align: center;
+    padding: 0px;
+    margin: 0px 0px 4px 0px;
+    width: inherit;
+    height: relative;
+    background-color: transparent;
+}
+
+#enemyCardInside {
+    margin: 0px;
+    padding: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    width: 100%;
+    background-color: transparent;
+}
+
+#enemyCardInside p {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 16px;
+    color: black;
+    text-align: left;
+    margin: 0px;
+    padding: 0px 10px 0px 10px;
+    background-color: transparent;
+    color: grey;
+}
+
+
+
+
+.tallyCard {
+    margin: 0px 10px 0px 10px;
+    padding: 0px;
+    border-radius: 10px;
+    width: 190px;
+    height: 250px;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    background-color: transparent;
+}
+
+.tallyCard h3 {
+    color: grey;
+    font-family: 'Impact';
+    font-weight: lighter;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.tallyCard h4 {
+    color: rgb(182, 76, 76);
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+}
+
+.emptyCard {
+    margin: 0px 10px 0px 10px;
+    padding: 0px;
+    border-radius: 10px;
+    width: 190px;
+    height: 250px;
+    background-color: transparent;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+}
+
+.emptyCard h3 {
+    color: grey;
+    font-family: 'Impact';
+    font-weight: lighter;
+    font-size: 20px;
+    margin: 0px;
+    padding: 0px;
+    text-align: center;
+    width: 100%;
+    align-content: center;
+    align-items: flex-start;
+}
+
+#emptyID {
+    margin: 0px;
+    padding: 0px;
+}
+
+#emptyID p {
+    color: rgb(182, 76, 76);
+    font-family: 'Roboto condensed';
+    font-size: 18px;
+    margin: 0px;
+    padding: 0px 0px 4px 0px;
+    text-align: center;
+    width: relative;
+}
+
+.footer {
+    color: #555;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: relative;
+    text-align: center;
+    font-family: 'Roboto condensed';
+    font-size: 14px;
+}
+
+/*Defeat Page*/
+.defeatSection {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.defeatWrapper {
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    width: 540px;
+    height: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: grey;
+    border-radius: 20px;
+    border: 3px solid black;
+}
+
+.defeatWrapper h1 {
+    margin: 10px 0px 15px 0px;
+    padding: 0px;
+    width: 100%;
+    height: relative;
+    background-color: transparent;
+    font-family: 'Impact';
+    font-size: 30px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.defeatWrapper img {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    width: 480px;
+    height: 270px;
+    border: 1px solid black;
+}
+
+.defeatWrapper p {
+    margin: 0px 0px 10px 0px;
+    padding: 0px 40px 0px 40px;
+    background-color: transparent;
+    font-family: 'Roboto condensed';
+    font-size: 20px;
+    color: black;
+}
+
+.defeatWrapper a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.defeatWrapper a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+/*Victory Page*/
+.victorySection {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.victoryWrapper {
+    margin: 20px 0px 20px 0px;
+    padding: 20px;
+    width: 540px;
+    height: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: grey;
+    border-radius: 20px;
+    border: 3px solid black;
+}
+
+.victoryWrapper h1 {
+    margin: 10px 0px 15px 0px;
+    padding: 0px;
+    width: 100%;
+    height: relative;
+    background-color: transparent;
+    font-family: 'Impact';
+    font-size: 30px;
+    font-weight: lighter;
+    text-align: center;
+}
+
+.victoryWrapper img {
+    margin: 0px 0px 10px 0px;
+    padding: 0px;
+    width: 480px;
+    height: 270px;
+    border: 1px solid black;
+}
+
+.victoryWrapper p {
+    margin: 0px 0px 10px 0px;
+    padding: 0px 40px 0px 40px;
+    background-color: transparent;
+    font-family: 'Roboto condensed';
+    font-size: 20px;
+    color: black;
+}
+
+.victoryWrapper a {
+    margin: 0px;
+    padding: 2px 10px 2px 10px;
+    text-decoration: none;
+    color: #222;
+    background-color: #555;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+.victoryWrapper a:hover {
+    background-color: rgb(67, 90, 60);
+    color: black;
+}
+
+#weapon {
+    margin: 0px;
+    padding: 0px;
+    background-color: transparent;
+}
+#weapon p {
+    background-color: transparent;
+}

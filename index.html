@@ -1,0 +1,145 @@
+<html>
+    <head class="mainHeader">
+            <meta charset="utf-8">
+            <title>Get to Da Choppa!</title>
+            <link rel="stylesheet" href="./index.css">
+            <script src="./js/index.js"></script>
+            <script src="./js/player.js"></script>
+            <script src="./js/enemy.js"></script>
+            <script src="./js/cards.js"></script>
+    </head>
+    <body class="wholePage">
+        
+        <div class="bannerSection">
+            <div class="bannerWrapper">
+                <a href="./index.html">
+                    <h2>Home</h2>
+                </a>
+                <h1>Get to Da Choppa!</h1>
+            </div>
+        </div>
+        
+        <div class="introSection">
+            <div class="introWrapper">
+                <img src="./img/title.png">
+                <p>Welcome, girly men and women to the most brutal battle game of all time! If you think you are man or woman enough to face the most villainous super-villains of all time, click one of the buttons below.</p>
+            </div>
+        
+        </div>
+
+        <!-- This section holds the modal box buttons-->
+        <div class="buttonSection">
+            <a href="#rulesButton">Da Game</a>
+            <a href="#heroButton">Da Heroes</a>
+            <a href="#legalButton">Da Legal</a>
+            <a href="#makerButton">Da Maker</a>
+        </div>
+
+        <!-- This section holds the contents of the modal boxes-->
+        <div>
+            <div id="rulesButton">
+                <div>
+                    <h1>Da Game</h1>
+                    <p>As one of the most unforgettable heroes of all time, you will battle the most heinous villains the world has ever known. Will you crush their throats with your bare hands? Or will you run screaming from their army of loyal minions? The choice is yours.</p>
+                    <div id="releaseNotesButton">
+                    <a href="#releaseNotes">Release Notes</a>
+                    <a href="#futureFeatures">Future Features</a>
+                    </div>
+                    <a href="#close">Close</a>
+                </div>
+            </div>
+
+            <div id="heroButton">
+                <div>
+                    <div class="heroIntro">
+                        <h1>Da Heroes</h1>
+                        <p>Which one of these most manly of non-girly men will you choose?</p>
+                    </div>
+                    <div class="cardWrapper">
+                        <div class="heroWrapper">
+                            <a href="#" onclick="Main.startSettings('Dutch')">
+                                <div class="hero">
+                                    <h3>Dutch</h3>
+                                    <img src="./img/dutch.png" alt="Dutch" class="img">
+                                    <p>Veteran Special Operator. Expert in jungle warfare. Not afraid of getting muddy.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="heroWrapper">
+                            <a href="#" onclick="Main.startSettings('Douglas Quaid')">
+                                <div class="hero">
+                                    <h3>Douglas Quaid</h3>
+                                    <img src="./img/quaid.png" alt="Douglas Quaid" class="img">
+                                    <p>Mild-mannered construction worker. Likes demure women. Not a fan of parties.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="heroWrapper">
+                            <a href="#" onclick="Main.startSettings('Harry Tasker')">
+                                <div class="hero">
+                                    <h3>Harry Tasker</h3>
+                                    <img src="./img/tasker.png" alt="Harry Tasker" class="img">
+                                    <p>Veteran Special Agent with an iron-clad secret identity. Sometimes has marital troubles. Not a fan of car salesmen.</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="heroWrapper">
+                            <a href="#" onclick="Main.startSettings('John Matrix')">
+                                <div class="hero">
+                                    <h3>John Matrix</h3>
+                                    <img src="./img/matrix.png" alt="John Matrix" class="img">
+                                    <p>Commando by trade. Lumberjack by necessity. Father of the Year.</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <a href="#close">Close</a>
+                </div>
+                
+            </div>
+
+            <div id="legalButton">
+                <div>
+                    <h1>Da Legal</h1>
+                    <p>This game is in no way affiliated with or sanctioned by the Honorable Arnold Schwarzenegger (may he live forever, etc.), 20th Century Fox, Paramount Pictures, or any other corporate entity I may forgotten. It is intended as an homage to my favorite action star of all time and the movies I grew up watching that still today provide some of the most memorable quotes.</p>
+                    <a href="#close">Close</a>
+                </div>
+            </div>
+            <div id="makerButton">
+                <div>
+                    <h1>Da Maker</h1>
+                    <img src='./img/me.jpg'>
+                    <p>Gabe Rigall is an independent programmer/web developer/data analyst/machine learning enthusiast/evil genius who grew up watching Arnold Schwarzenegger movies and playing card, board, and videogames. The inspiration for "Get to Da Choppa" came after a particularly riveting bout of "Marrying Mr. Darcy" wherein his wife soundly beat him to the punch (pun intended).</p>
+                    <a href="#close">Close</a>
+                </div>
+            </div>
+            <div id="releaseNotes">
+                <div>
+                    <h1>Release Notes</h1>
+                    <p>Version 1.0</p>
+                    <p>This version is modeled after the physical card game and, as such, is currently bare bones. There are many more features planned but in the meantime, please enjoy!</p>
+                    <a href="#rulesButton">Close</a>
+                </div>
+            </div>
+            <div id="futureFeatures">
+                <div>
+                    <h1>Future Features</h1>
+                    <p>Here are some cool features I plan to put in.</p>
+                    <ul>
+                        <li>More Weapons!</li>
+                        <li>Action cards that actually do stuff!</li>
+                        <li>Trusty Sidekicks!</li>
+                        <li>Environments!</li>
+
+                    </ul>
+                    <a href="#rulesButton">Close</a>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
+    </body>
+
+
+
+</html>
