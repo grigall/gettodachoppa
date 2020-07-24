@@ -112,7 +112,7 @@ let Main = {
                         </a>
                     </div>
                 <div class="actionCard1">
-                    <a href="#" onclick="Main.refreshActionCard1()">
+                    <a href="#" onclick="Main.refreshActionCard(1)">
                         <div class="placeHolder">
                             <h2>Draw Card</h2>
                         </div>
@@ -120,7 +120,7 @@ let Main = {
                 </div>
 
                 <div class="actionCard2">
-                    <a href="#" onclick="Main.refreshActionCard2()">
+                    <a href="#" onclick="Main.refreshActionCard(2)">
                         <div class="placeHolder">
                             <h2>Draw Card</h2>
                         </div>
@@ -134,8 +134,8 @@ let Main = {
             <div class="buttonSection">
                 <div class="buttonWrapper">
                     <a href="#" onclick="Main.attackButton()">Attack</a>
-                    <a href="#" onclick="Main.playCardOne()">Play Card</a>
-                    <a href="#" onclick="Main.playCardTwo()">Play Card</a>
+                    <a href="#" onclick="Main.playCard(1)">Play Card</a>
+                    <a href="#" onclick="Main.playCard(2)">Play Card</a>
                 </div>
             </div>
 
@@ -183,7 +183,7 @@ let Main = {
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
-        let chooseRandomCard = Math.floor(Math.random() * 8);
+        let chooseRandomCard = Math.floor(Math.random() * 17);
         switch (chooseRandomCard) {
             case 0:
                 RandomCard = skillCard01; //First Aid
@@ -198,7 +198,7 @@ let Main = {
                 RandomCard = weaponCard03;
             break;
             case 4:
-                RandomCard = actionCard01;
+                RandomCard = actionCard01; //Let off some steam
             break;
             case 5:
                 RandomCard = weaponCard04;
@@ -209,135 +209,185 @@ let Main = {
             case 7:
                 RandomCard = skillCard01; //First Aid
             break;
+            case 8:
+                RandomCard = actionCard02; //Nice Night for a Walk
+            break;
+            case 9:
+                RandomCard = skillCard03; //Good horse
+            break;
+            case 10:
+                RandomCard = skillCard04 //Inconvenient truth
+            break;
+            case 11:
+                RandomCard = skillCard05 //STR
+            break;
+            case 12:
+                RandomCard = skillCard06 //SPD
+            break;
+            case 13:
+                RandomCard = skillCard07 //Minor Explosion
+            break;
+            case 14:
+                RandomCard = skillCard05 //STR
+            break;
+            case 15:
+                RandomCard = skillCard05 //STR
+            break;
+            case 16:
+                RandomCard = skillCard06 //SPD
+            break;
         };
     },
-    refreshActionCard1: function() {
-        if (cardCount < 2) {
-            this.drawActionCard();
-            card = RandomCard;
-            let getActionCard1 = document.querySelector(".actionCard1");
-            getActionCard1.innerHTML = (`
-            <div class="actionCard1">
-                <a href="#" onclick="Main.actionCardClick(card)">
-                <h3>` + card.cardName + `</h3>
-                <img src="img/` + card.NN + `.png">
-                <p>` + card.DESC + `</p>
-                </a>
-            </div>
-            `);
-        } else if (cardCount >= 2) {
+    refreshActionCard: function(cardSelection) {
+        //Checks card count first to exclude other actions
+        if (cardCount >= 2) {
             alert('You cannot play more than two cards per round.');
-        };
-    },
-    refreshActionCard2: function() { 
-        if (cardCount < 2) {
+        } else if (cardCount < 2) {
             this.drawActionCard();
-            card2 = RandomCard;
-            let getActionCard2 = document.querySelector(".actionCard2");
-            getActionCard2.innerHTML = (`
-            <div class="actionCard2">
-                <a href="#" onclick="Main.actionCardClick(card2)">
-                <h3>` + card2.cardName + `</h3>
-                <img src="img/` + card2.NN + `.png">
-                <p>` + card2.DESC + `</p>
-                </a>
-            </div>
-            `);
-        } else if (cardCount >= 2) {
+            if (cardSelection == 1) {
+                card = RandomCard;
+                let getActionCard1 = document.querySelector(".actionCard1");
+                getActionCard1.innerHTML = (`
+                <div class="actionCard1">
+                    <a href="#" onclick="Main.actionCardClick(card)">
+                    <h3>` + card.cardName + `</h3>
+                    <img src="img/` + card.NN + `.png">
+                    <p>` + card.DESC + `</p>
+                    </a>
+                </div>
+                `);
+            } else if (cardSelection == 2) {
+                card2 = RandomCard;
+                let getActionCard2 = document.querySelector(".actionCard2");
+                getActionCard2.innerHTML = (`
+                <div class="actionCard2">
+                    <a href="#" onclick="Main.actionCardClick(card2)">
+                    <h3>` + card2.cardName + `</h3>
+                    <img src="img/` + card2.NN + `.png">
+                    <p>` + card2.DESC + `</p>
+                    </a>
+                </div>
+                `);
+            };
+        };
+    },
+    playCard: function(cardNumber) {
+        let actionCard;
+        if (cardCount >= 2) {
             alert('You cannot play more than two cards per round.');
+        } else if (cardNumber == 1) {
+            actionCard = card;
+        } else if (cardNumber == 2) {
+            actionCard = card2;
         };
-    },
-    playCardOne: function() {
-        switch (card.cardType) {
-            case 0: 
-                weapon = card;
-                this.refreshPlayerCard();
-                this.resetPlaceholder1();
-                card = null;
-                cardCount++;
-            break;
-            case 1:
-                if (weapon == noWeapon) {
-                    player.HP = player.HP + card.HP;
-                    player.STR = player.STR + card.STR;
-                    player.SPD = player.SPD + card.SPD;
+        if (actionCard.affectPlayer == true && actionCard.affectBoss == true && actionCard.affectMinion == true) {
+            player.HP = player.HP + actionCard.HP;
+            player.STR = player.STR + actionCard.STR;
+            player.SPD = player.SPD + actionCard.SPD;
+            enemy.HP = enemy.HP + actionCard.HP;
+            enemy.STR = enemy.STR + actionCard.STR;
+            enemy.SPD = enemy.SPD + actionCard.SPD;
+            /* Add logic here for the case of player or enemy death */
+            this.refreshPlayerCard();
+            this.refreshEnemyCard();
+            this.resetPlaceholder(cardNumber);
+            actionCard = null;
+            cardCount++;
+        } else if (actionCard.affectPlayer == true && actionCard.affectBoss == false && actionCard.affectMinion == false) {
+            switch (actionCard.cardType) {
+                case 0: //Weapon Card
+                    weapon = actionCard;
                     this.refreshPlayerCard();
-                    this.resetPlaceholder1();
+                    this.resetPlaceholder(cardNumber);
+                    actionCard = null;
+                    cardCount++;
+                break;
+                case 1: //Stat-enhancing Card
+                    if (weapon == noWeapon) {
+                        player.HP = player.HP + actionCard.HP;
+                        player.STR = player.STR + actionCard.STR;
+                        player.SPD = player.SPD + actionCard.SPD;
+                        this.refreshPlayerCard();
+                        this.resetPlaceholder(cardNumber);
+                    } else {
+                        player.HP = player.HP + actionCard.HP;
+                        player.STR = player.STR + actionCard.STR;
+                        player.SPD = player.SPD + actionCard.SPD;
+                        this.refreshPlayerCard();
+                        this.resetPlaceholder(cardNumber);
+                    };
+                    actionCard = null;
+                    cardCount++;
+                break;
+                case 2: //Action Card
+                    player.HP = player.HP + actionCard.HP;
+                    player.STR = player.STR + actionCard.STR;
+                    player.SPD = player.SPD + actionCard.SPD;
+                    this.refreshPlayerCard();
+                    this.resetPlaceholder(cardNumber);
+                    actionCard = null;
+                    cardCount++;
+                break;
+            };
+        } else {
+            if (actionCard.affectMinion == false && enemy.enemyType == 'Minion') {
+                alert('This card has no affect on Minions.');
+                actionCard = null;
+                this.resetPlaceholder(cardNumber);
+            } else if (actionCard.affectBoss == false && enemy.enemyType == 'Boss') {
+                alert('This card has no affect on Bosses.');
+                actionCard = null;
+                this.resetPlaceholder(cardNumber);
+            } else {
+                enemy.HP = enemy.HP + actionCard.HP;
+                enemy.STR = enemy.STR + actionCard.STR;
+                enemy.SPD = enemy.SPD + actionCard.SPD;
+                //In case the enemy dies
+                if (enemy.HP <= 0) {
+                    if (killTarget == 1) {
+                        killCount++;
+                    } else if (killTarget > 1) {
+                        this.refreshKillCount();
+                    };
+                    if (killCount == killTarget){
+                        this.loadVictoryScreen();
+                    } else {
+                        this.refreshPlayerCard();
+                        this.revealEnemyCard();
+                    };
                 } else {
-                    player.HP = player.HP + card.HP;
-                    player.STR = player.STR + card.STR;
-                    player.SPD = player.SPD + card.SPD;
-                    this.refreshPlayerCard();
-                    this.resetPlaceholder1();
+                    this.refreshEnemyCard();
                 };
-                card = null;
+                this.resetPlaceholder(cardNumber);
+                actionCard = null;
                 cardCount++;
-            break;
-            case 2:
-                alert('This card has no effect.');
-                this.resetPlaceholder1();
-                cardCount++;
-            break;
+            };
         };
     },
-    playCardTwo: function() {
-        switch (card2.cardType) {
-            case 0: 
-                weapon = card2;
-                this.refreshPlayerCard();
-                this.resetPlaceholder2();
-                card2 = null;
-                cardCount++;
-            break;
-            case 1:
-                if (weapon == noWeapon) {
-                    player.HP = player.HP + card2.HP;
-                    player.STR = player.STR + card2.STR;
-                    player.SPD = player.SPD + card2.SPD;
-                    this.refreshPlayerCard();
-                    this.resetPlaceholder2();
-                } else {
-                    player.HP = player.HP + card2.HP;
-                    player.STR = player.STR + card2.STR;
-                    player.SPD = player.SPD + card2.SPD;
-                    this.refreshPlayerCard();
-                    this.resetPlaceholder2();
-                };
-                card2 = null;
-                cardCount++;
-            break;
-            case 2:
-                alert('This card has no effect.');
-                this.resetPlaceholder2();
-                cardCount++;
-            break;
+    resetPlaceholder: function(cardNumber) {
+        if (cardNumber == 1) {
+            let resetCard1 = document.querySelector(".actionCard1");
+            resetCard1.innerHTML = (`
+                <div class="actionCard1">
+                    <a href="#" onclick="Main.refreshActionCard(1)">
+                        <div class="placeHolder">
+                            <h2>Draw Card</h2>
+                        </div>
+                    </a>
+                </div>
+            `);
+        } else if (cardNumber == 2) {
+            let resetCard2 = document.querySelector(".actionCard2");
+            resetCard2.innerHTML = (`
+                <div class="actionCard2">
+                    <a href="#" onclick="Main.refreshActionCard(2)">
+                        <div class="placeHolder">
+                            <h2>Draw Card</h2>
+                        </div>
+                    </a>
+                </div>
+            `);
         };
-    },
-    resetPlaceholder1: function() {
-        let resetCard = document.querySelector(".actionCard1")
-        resetCard.innerHTML = (`
-            <div class="actionCard1">
-                <a href="#" onclick="Main.refreshActionCard1()">
-                    <div class="placeHolder">
-                        <h2>Draw Card</h2>
-                    </div>
-                </a>
-            </div>
-        `);
-
-    },
-    resetPlaceholder2: function() {
-        let resetCard = document.querySelector(".actionCard2")
-        resetCard.innerHTML = (`
-            <div class="actionCard2">
-                <a href="#" onclick="Main.refreshActionCard2()">
-                    <div class="placeHolder">
-                        <h2>Draw Card</h2>
-                    </div>
-                </a>
-            </div>
-        `);
-
     },
     loadMinion: function() {
         //Chooses random minion if minion count is not zero
