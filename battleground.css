@@ -714,3 +714,113 @@ body {
 #weapon p {
     background-color: transparent;
 }
+
+#getBattleLog {
+    margin: 0px;
+    padding: 0px;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    z-index: 100;
+    background-color: transparent;
+
+}
+
+#getBattleLog a {
+    margin: 0px;
+    padding: 4px 10px 4px 10px;
+    color: #222;
+    background-color: #555;
+    text-decoration: none;
+    font-family: 'Roboto condensed';
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+#getBattleLog a:hover {
+    background-color: rgb(67, 90, 60);
+    color: whitesmoke;
+}
+
+.overlay {
+    margin: 0px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+    background-color: rgba(22, 22, 22, 0.7);
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+.autoActionCard a {
+    margin: 0px;
+    padding: 0px;
+    background-color: #222;
+}
+
+.autoActionCard {
+    margin: 0px;
+    padding: 0px;
+    width: 180px;
+    height: 240px;
+    z-index: 101;
+    background-image: url('img/ac_bg2.png');
+    background-size: cover;
+    background-position: center;
+    text-decoration: none;
+    border-radius: 10px;
+    border: solid 5px grey;
+    /*position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);*/
+}
+
+.autoActionCard:hover {
+    background-color: #222;
+    background-image: none;
+    border-color:black;
+}
+
+.autoActionCard h3 {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+    padding: 1px 0px 3px 0px;
+    margin: 0px;
+    border-radius: 5px 5px 0px 0px;
+    background-color: transparent;
+    color: whitesmoke;
+    display: block;
+}
+
+.autoActionCard p {
+    font-family: 'Roboto condensed';
+    font-weight: normal;
+    font-size: 14px;
+    color: black;
+    text-align: left;
+    margin: 8px 8px 0px 8px;
+    padding: 0px 4px 0px 4px;
+    height: 100px;
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    display: block;
+}
+
+.autoActionCard img {
+    width: 160px;
+    height: 90px;
+    border: solid 3px grey;
+    border-radius: 5px;
+    position: relative;
+    left: 8px;
+    margin: 0px;
+}

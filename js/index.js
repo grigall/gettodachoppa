@@ -1,11 +1,24 @@
 let killCount = 0; //Primarily used to control when the boss shows up
 let killTarget; //Used with killCount
-let enemy; //Main enemy variable
+let enemy = null; //Main enemy variable
 let weapon = null; //Initially sets weapon state
 let RandomCard; //Initializes "deck"
 let killList = []; //Empty array for kill list once the action starts
-let cardCount = 0;
-let damage = 0;
+let cardCount = 0; //Sets card count to zero initially.
+let cardLimit = 2; //Sets initial action card limit per round. Can be changed based off difficulty level
+let damage = 0; //Damage variable for calculating weapon effects. Resets every round.
+let battleOutcome; //Empty variable for battle outcome. Used in battle log.
+let emptyDiv = document.createElement("div"); //Creates empty parent-less <div> tag for later use
+
+function BattleLog (logID, hero, boss, lastEnemy, minionList, outcome) {
+    this.logID = logID;
+    this.hero = hero;
+    this.boss = boss;
+    this.lastEnemy = lastEnemy;
+    this.minionList = minionList;
+    this.outcome = outcome;
+};
+let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
 
 let Main = {
 
@@ -32,7 +45,12 @@ let Main = {
                 player = hero03;
                 break;
         }
-        getPlayer.innerHTML = '<div class="hero"><h3>' + player.classType + '</h3><img src="img/' + player.NN + '.png" alt="Dutch"><p>' + player.DESC + '</p></div>';
+        getPlayer.innerHTML = (`
+        <div class="hero">
+            <h3>` + player.classType + `</h3>
+            <img src="img/` + player.NN + `.png" alt="Dutch">
+            <p>` + player.DESC + `</p>
+        </div>`);
     },
     //This sets the boss and minions
     setEnemies: function () {
@@ -170,7 +188,7 @@ let Main = {
     actionCardClick: function(cardOption) {
 
         //Checks what the card type is and displays a different set of stats depending on what it is
-        if (cardCount >= 2) {
+        if (cardCount >= cardLimit) {
             alert('You cannot play more than two cards per round.');
         } else if (cardOption.cardType == 0) {
             alert('Card Type: Weapon\nPlay Phase: ' + cardOption.playPhase + '\nSPD: ' + cardOption.SPD + '\nDMG: ' + cardOption.die + 'd' + cardOption.DMG);
@@ -183,7 +201,7 @@ let Main = {
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
-        let chooseRandomCard = Math.floor(Math.random() * 17);
+        let chooseRandomCard = Math.floor(Math.random() * 19);
         switch (chooseRandomCard) {
             case 0:
                 RandomCard = skillCard01; //First Aid
@@ -236,15 +254,26 @@ let Main = {
             case 16:
                 RandomCard = skillCard06 //SPD
             break;
+            case 17:
+                RandomCard = skillCard08 //HP
+            break;
+            case 18:
+                RandomCard = skillCard09 //Exploding vehicle
+            break;
         };
     },
     refreshActionCard: function(cardSelection) {
-        //Checks card count first to exclude other actions
-        if (cardCount >= 2) {
-            alert('You cannot play more than two cards per round.');
-        } else if (cardCount < 2) {
+        if (enemy == null) {
+            alert('You must reveal your enemy first!');
+        } else if (cardCount >= cardLimit) { 
+            //Checks card count first to exclude other actions
+            alert('You cannot play more than two cards per round.');      
+        } else if (cardCount < cardLimit) {
             this.drawActionCard();
-            if (cardSelection == 1) {
+            if (RandomCard.playPhase == 0) {
+                //Automatically plays card if it's negative to player
+                this.autoActionCard(cardSelection);
+            } else if (cardSelection == 1) {
                 card = RandomCard;
                 let getActionCard1 = document.querySelector(".actionCard1");
                 getActionCard1.innerHTML = (`
@@ -272,8 +301,19 @@ let Main = {
         };
     },
     playCard: function(cardNumber) {
-        let actionCard;
-        if (cardCount >= 2) {
+        let actionCard; //Local variable
+        //If global card event, removes card modal
+        if (RandomCard.playPhase == 0) {
+            if (cardNumber == 1) {
+                card = RandomCard;
+            } else if (cardNumber == 2) {
+                card2 = RandomCard;
+            };
+            this.removeActionCard(emptyDiv);
+        };
+        
+        //Assigns local card variable based off cardNumber argument
+        if (cardCount >= cardLimit) {
             alert('You cannot play more than two cards per round.');
         } else if (cardNumber == 1) {
             actionCard = card;
@@ -288,6 +328,23 @@ let Main = {
             enemy.STR = enemy.STR + actionCard.STR;
             enemy.SPD = enemy.SPD + actionCard.SPD;
             /* Add logic here for the case of player or enemy death */
+            if (player.HP <= 0) { //In case the player dies
+                this.loadDefeatScreen();
+            } else if (enemy.HP <= 0) { //In case the enemy dies
+                if (killTarget == 1) {
+                    killCount++;
+                } else if (killTarget > 1) {
+                    this.refreshKillCount();
+                };
+                if (killCount == killTarget){
+                    this.loadVictoryScreen();
+                } else {
+                    this.refreshPlayerCard();
+                    this.revealEnemyCard();
+                };
+            } else {
+                this.refreshEnemyCard();
+            };
             this.refreshPlayerCard();
             this.refreshEnemyCard();
             this.resetPlaceholder(cardNumber);
@@ -303,23 +360,6 @@ let Main = {
                     cardCount++;
                 break;
                 case 1: //Stat-enhancing Card
-                    if (weapon == noWeapon) {
-                        player.HP = player.HP + actionCard.HP;
-                        player.STR = player.STR + actionCard.STR;
-                        player.SPD = player.SPD + actionCard.SPD;
-                        this.refreshPlayerCard();
-                        this.resetPlaceholder(cardNumber);
-                    } else {
-                        player.HP = player.HP + actionCard.HP;
-                        player.STR = player.STR + actionCard.STR;
-                        player.SPD = player.SPD + actionCard.SPD;
-                        this.refreshPlayerCard();
-                        this.resetPlaceholder(cardNumber);
-                    };
-                    actionCard = null;
-                    cardCount++;
-                break;
-                case 2: //Action Card
                     player.HP = player.HP + actionCard.HP;
                     player.STR = player.STR + actionCard.STR;
                     player.SPD = player.SPD + actionCard.SPD;
@@ -328,6 +368,9 @@ let Main = {
                     actionCard = null;
                     cardCount++;
                 break;
+            };
+            if (player.HP <= 0) { //In case the player dies
+                this.loadDefeatScreen();
             };
         } else {
             if (actionCard.affectMinion == false && enemy.enemyType == 'Minion') {
@@ -560,9 +603,14 @@ let Main = {
                     <a href="index.html">Play Again</a>
                     </div>
                 </div>
+                <div id="getBattleLog">
+                <a href="#" onclick='Main.getBattleLog(battleLog, battleLog.logID)'>Download Battle Log</a>
+            </div>
             <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
             </body>  
-        `);
+            `);
+        battleOutcome = 0;
+        this.setBattleLog();
     },
     loadVictoryScreen: function() {
         let victoryScreen = document.querySelector(".wholePage");
@@ -576,9 +624,14 @@ let Main = {
                         <a href="index.html">Play Again</a>
                     </div>
                 </div>
+                <div id="getBattleLog">
+                    <a href="#" onclick='Main.getBattleLog(battleLog, battleLog.logID)'>Download Battle Log</a>
+                </div>
             <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
             </body>
             `);
+        battleOutcome = 1;
+        this.setBattleLog();
     },
     refreshKillCount: function() {
         killCount++;
@@ -641,7 +694,40 @@ let Main = {
             damage = damage + rollDie;
         };
         console.log(damage); //Console logged just for funzies
+    },
+    setBattleLog: function() {
+        var battleID = Math.floor(Date.now()/1000); //Sets unique ID based on current date/time
+        //Populate battle log
+        battleLog.logID = battleID;
+        battleLog.hero = player;
+        battleLog.boss = boss;
+        battleLog.lastEnemy = enemy;
+        battleLog.minionList = killList;
+        battleLog.outcome = battleOutcome;
+    },
+    autoActionCard: function(cardSelection) {
+        //Fills empty <div> with card info
+        emptyDiv.innerHTML = (`
+            <div class="overlay">
+                <a href="#" onclick="Main.playCard(`+ cardSelection +`)" class="autoActionCard">
+                    <h3>` + RandomCard.cardName + `</h3>
+                    <img src="img/` + RandomCard.NN + `.png">
+                    <p>` + RandomCard.DESC + `</p>
+                </a>
+            </div>
+        `);
+        document.body.appendChild(emptyDiv); //Adds HTML element to body
+    },
+    removeActionCard: function(unneededElement) {
+        unneededElement.remove(); //Deletes pop-up modal with card
+    },
+    getBattleLog: function(battleLog, battleID){
+        var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(battleLog));
+        var downloadAnchorNode = document.createElement('a');
+        downloadAnchorNode.setAttribute("href",     dataStr);
+        downloadAnchorNode.setAttribute("download", "Battle_Log_" + battleID + ".json");
+        document.body.appendChild(downloadAnchorNode); // required for firefox
+        downloadAnchorNode.click();
+        downloadAnchorNode.remove();
     }
-
-    
 }
