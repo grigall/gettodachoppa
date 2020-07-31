@@ -15,4 +15,4 @@ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
 
-Note: All images utilized in this game are present only for placeholder purposes only. I do not own these images. I do not intend to make any money from this game. All of this is just for fun because I love Arnold Schwarzenegger and his movies. There. I've said it. Please don't sue me!
+Note: All images utilized in this game are present only for placeholder purposes only. I do not own these images. I do not intend to make any money from this game in its current iteration. All of this is just for fun (for now) because I love Arnold Schwarzenegger and his movies. There. I've said it. Call off your legal team.
