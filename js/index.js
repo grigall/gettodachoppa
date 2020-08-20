@@ -17,7 +17,7 @@ function BattleLog (logID, hero, boss, lastEnemy, minionList, outcome) {
     this.lastEnemy = lastEnemy;
     this.minionList = minionList;
     this.outcome = outcome;
-};
+}
 let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
 
 let Main = {
@@ -28,7 +28,7 @@ let Main = {
         this.setEnemies();
         this.BattleGround();
     },
-    //This sets the player character   
+    //This sets the player character
     setCharacter: function (classType) {
         let getPlayer = document.querySelector(".hero");
         switch (classType) {
@@ -80,7 +80,7 @@ let Main = {
                 boss = enemy04;
                 killTarget = (boss.MIN + 1);
             break;
-        } 
+        }
     },
     BattleGround: function () {
         weapon = noWeapon; //Sets default weapon to None
@@ -93,13 +93,13 @@ let Main = {
         `<head class="mainHeader">
             <meta charset="utf-8">
             <title>Get to Da Choppa!</title>
-            <link rel="stylesheet" href="battleground.css">
+            <link rel="stylesheet" href="./styles/battleground.css">
             <script src="js/index.js"></script>
             <script src="js/player.js"></script>
             <script src="js/enemy.js"></script>
             <script src="js/cards.js"></script>
         </head>`);
-        
+
         //Replaces the entire body with new structure for battleground
         replaceWholePage.innerHTML = (
         `<body class="wholePage">
@@ -111,11 +111,11 @@ let Main = {
                     <h1>Brutal Battleground</h1>
                 </div>
             </div>
-            
+
             <!--This section holds the hero and action cards-->
             <div class="heroSection">
                 <div class="heroWrapper">
-                    <div class="heroCard">    
+                    <div class="heroCard">
                         <a href="#" onclick="Main.mouseClickDesc()">
                             <div class="hero">
                                 <img src="img/` + player.NN + `.png">
@@ -146,7 +146,7 @@ let Main = {
                 </div>
             </div>
             </div>
-        
+
             <!--This section holds the action buttons-->
             <br>
             <div class="buttonSection">
@@ -159,7 +159,7 @@ let Main = {
 
             <!--This section holds the enemy cards-->
             <div class="enemySection">
-                <div class="enemyWrapper">    
+                <div class="enemyWrapper">
                     <div class="tallyCard">
                         <h3>Kill Count: </h3>
                         <h4>` + killCount + `</h4>
@@ -176,7 +176,7 @@ let Main = {
                         <p id="emptyID"></p>
                     </div>
                 </div>
-                
+
             </div>
 
         <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
@@ -196,8 +196,8 @@ let Main = {
             alert('Card Type: Action\nPlay Phase: ' + cardOption.playPhase + '\nDMG: ' + cardOption.DMG + '\nBonus: ' + cardOption.bonus);
         } else if (cardOption.cardType == 1) {
             alert('Card Type: Skill\nPlay Phase: ' + cardOption.playPhase + '\nHP: ' + cardOption.HP + '\nSTR: ' + cardOption.STR + '\nSPD: ' + cardOption.SPD);
-        };
-        
+        }
+
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
@@ -260,14 +260,14 @@ let Main = {
             case 18:
                 RandomCard = skillCard09 //Exploding vehicle
             break;
-        };
+        }
     },
     refreshActionCard: function(cardSelection) {
         if (enemy == null) {
             alert('You must reveal your enemy first!');
-        } else if (cardCount >= cardLimit) { 
+        } else if (cardCount >= cardLimit) {
             //Checks card count first to exclude other actions
-            alert('You cannot play more than two cards per round.');      
+            alert('You cannot play more than two cards per round.');
         } else if (cardCount < cardLimit) {
             this.drawActionCard();
             if (RandomCard.playPhase == 0) {
@@ -297,8 +297,8 @@ let Main = {
                     </a>
                 </div>
                 `);
-            };
-        };
+            }
+        }
     },
     playCard: function(cardNumber) {
         let actionCard; //Local variable
@@ -308,19 +308,21 @@ let Main = {
                 card = RandomCard;
             } else if (cardNumber == 2) {
                 card2 = RandomCard;
-            };
+            }
             this.removeActionCard(emptyDiv);
-        };
-        
+        }
+
         //Assigns local card variable based off cardNumber argument
-        if (cardCount >= cardLimit) {
-            alert('You cannot play more than two cards per round.');
+if (cardCount >= cardLimit) {
+    alert('You cannot play more than two cards per round.');
         } else if (cardNumber == 1) {
             actionCard = card;
         } else if (cardNumber == 2) {
             actionCard = card2;
-        };
-        if (actionCard.affectPlayer == true && actionCard.affectBoss == true && actionCard.affectMinion == true) {
+        }
+if (actionCard.affectPlayer == true
+    && actionCard.affectBoss == true
+    && actionCard.affectMinion == true) {
             player.HP = player.HP + actionCard.HP;
             player.STR = player.STR + actionCard.STR;
             player.SPD = player.SPD + actionCard.SPD;
@@ -335,16 +337,16 @@ let Main = {
                     killCount++;
                 } else if (killTarget > 1) {
                     this.refreshKillCount();
-                };
+                }
                 if (killCount == killTarget){
                     this.loadVictoryScreen();
                 } else {
                     this.refreshPlayerCard();
                     this.revealEnemyCard();
-                };
+                }
             } else {
                 this.refreshEnemyCard();
-            };
+            }
             this.refreshPlayerCard();
             this.refreshEnemyCard();
             this.resetPlaceholder(cardNumber);
@@ -368,12 +370,13 @@ let Main = {
                     actionCard = null;
                     cardCount++;
                 break;
-            };
+            }
             if (player.HP <= 0) { //In case the player dies
                 this.loadDefeatScreen();
-            };
+            }
         } else {
-            if (actionCard.affectMinion == false && enemy.enemyType == 'Minion') {
+              if (actionCard.affectMinion == false
+                && enemy.enemyType == 'Minion') {
                 alert('This card has no affect on Minions.');
                 actionCard = null;
                 this.resetPlaceholder(cardNumber);
@@ -391,21 +394,21 @@ let Main = {
                         killCount++;
                     } else if (killTarget > 1) {
                         this.refreshKillCount();
-                    };
+                    }
                     if (killCount == killTarget){
                         this.loadVictoryScreen();
                     } else {
                         this.refreshPlayerCard();
                         this.revealEnemyCard();
-                    };
+                    }
                 } else {
                     this.refreshEnemyCard();
-                };
+                }
                 this.resetPlaceholder(cardNumber);
                 actionCard = null;
                 cardCount++;
-            };
-        };
+            }
+        }
     },
     resetPlaceholder: function(cardNumber) {
         if (cardNumber == 1) {
@@ -430,7 +433,7 @@ let Main = {
                     </a>
                 </div>
             `);
-        };
+        }
     },
     loadMinion: function() {
         //Chooses random minion if minion count is not zero
@@ -463,11 +466,11 @@ let Main = {
             case 8:
                 minion = enemy18;
             break;
-        };
+        }
         //Insert logic here to ensure minion does not have negative health
     },
     revealEnemyCard: function() {
-        
+
         //Checks victory condition
         if (killCount == killTarget) {
             this.loadVictoryScreen();
@@ -476,20 +479,20 @@ let Main = {
             this.loadMinion(); //Loads minion
             while (minion.HP <= 0){ //Loops until it finds a minion with positive health
                 this.loadMinion();
-            };
+            }
             enemy = minion; //Assigns minion to enemy variable
         } else {
         //Sets enemy variable to be the Boss
         enemy = boss;
-        };
+        }
         this.refreshEnemyCard();
     },
-    
+
     //This section contains the main game logic
     attackButton: function() {
         cardCount = 0;
-        while (killCount < killTarget) 
-        { 
+        while (killCount < killTarget)
+        {
             if (player.HP > 0 && enemy.HP > 0)
             {
                 if (enemy.SPD >= player.SPD) { //If enemy is faster
@@ -505,17 +508,17 @@ let Main = {
                                 killCount++;
                             } else if (killTarget > 1) {
                                 this.refreshKillCount();
-                            };
+                            }
                             if (killCount == killTarget){
                                 this.loadVictoryScreen();
                             } else {
                                 this.refreshPlayerCard();
                                 this.revealEnemyCard();
                                 break;
-                            };
-                        };
+                            }
+                        }
                         break;
-                    };
+                    }
                 } else { //If player is faster
                     this.playerAttack();
                     if (enemy.HP <= 0) {
@@ -523,14 +526,14 @@ let Main = {
                             killCount++;
                         } else if (killTarget > 1) {
                             this.refreshKillCount();
-                        };
-                        if (killCount == killTarget){
+                        }
+                        if (killCount == killTarget) {
                             this.loadVictoryScreen();
                         } else {
                             this.refreshPlayerCard();
                             this.revealEnemyCard();
                             break;
-                        };
+                        }
 
                     } else {
                         alert(enemy.NN + ' strikes you for ' + enemy.STR + ' damage!')
@@ -538,28 +541,28 @@ let Main = {
                         if (player.HP <= 0) {
                             this.loadDefeatScreen();
                             break;
-                        };
+                        }
                         break;
-                    };
-                };
+                    }
+                }
 
-            } else if (player.HP <= 0){
+            } else if (player.HP <= 0) {
                 this.loadDefeatScreen();
                 break;
             } else {
                 break;
-            };
+            }
 
-        };
+        }
         if (killCount == killTarget) {
             this.loadVictoryScreen();
-        };
+        }
     },
     //These two refresh the DOM view so you can see changes in the variable state (e.g. when you or the enemy lose HP)
-    refreshPlayerCard: function() {
+    refreshPlayerCard: function () {
         let refreshPlayerCard = document.querySelector(".heroCard");
         refreshPlayerCard.innerHTML = (`
-        <div class="heroCard">    
+        <div class="heroCard">
             <a href="#" onclick="Main.mouseClickDesc()">
                 <div class="hero">
                     <img src="img/` + player.NN + `.png">
@@ -575,7 +578,7 @@ let Main = {
         </div>
         `);
     },
-    refreshEnemyCard: function() {
+    refreshEnemyCard: function () {
         let refreshEnemyCard = document.querySelector(".enemyCard");
         refreshEnemyCard.innerHTML = (`
                 <div class="enemyCard">
@@ -591,7 +594,7 @@ let Main = {
                 </div>
         `);
     },
-    loadDefeatScreen: function() {
+    loadDefeatScreen: function () {
         let defeatScreen = document.querySelector(".wholePage");
         defeatScreen.innerHTML = (`
             <body class="wholePage">
@@ -607,12 +610,12 @@ let Main = {
                 <a href="#" onclick='Main.getBattleLog(battleLog, battleLog.logID)'>Download Battle Log</a>
             </div>
             <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
-            </body>  
+            </body>
             `);
         battleOutcome = 0;
         this.setBattleLog();
     },
-    loadVictoryScreen: function() {
+    loadVictoryScreen: function () {
         let victoryScreen = document.querySelector(".wholePage");
         victoryScreen.innerHTML = (`
             <body class="wholePage">
@@ -633,7 +636,7 @@ let Main = {
         battleOutcome = 1;
         this.setBattleLog();
     },
-    refreshKillCount: function() {
+    refreshKillCount: function () {
         killCount++;
         let tallyCard = document.querySelector(".tallyCard");
         tallyCard.innerHTML = (`
@@ -645,12 +648,12 @@ let Main = {
             <!--<div>
             <h3>Kill Target: </h3>
             <h4>` + killTarget + `</h4>
-            </div>-->   
+            </div>-->
         </div>
         `);
         this.refreshKillList();
     },
-    refreshKillList: function() {
+    refreshKillList: function () {
         //Clears current kill list HTML so list doesn't stack up against previous list
         let emptyEmptyCard = document.querySelector("#emptyID");
         emptyEmptyCard.innerHTML = (`<p id="emptyID"></p>`)
@@ -659,20 +662,20 @@ let Main = {
         function updateKills(item) {
             let updateKillsVar = document.querySelector("#emptyID");
             updateKillsVar.innerHTML += (`<p>` + item + `</p>`);
-        };
-        
+        }
+
         //Adds current minion name to kill list
         killList.push(minion.NN);
-        
+
         //Iterates through kill list
         killList.forEach(updateKills);
     },
-    enemyAttack: function() {
+    enemyAttack: function () {
         player.HP = player.HP - enemy.STR;
         this.refreshPlayerCard();
     },
-    playerAttack: function() {
-        if(weapon == noWeapon) {
+    playerAttack: function () {
+        if (weapon == noWeapon) {
             enemy.HP = enemy.HP - player.STR;
             alert('You strike ' + enemy.NN + ' for ' + player.STR + ' damage!');
             this.refreshEnemyCard();
@@ -684,19 +687,19 @@ let Main = {
             this.refreshEnemyCard();
             this.refreshPlayerCard();
             damage = 0;
-        };
+        }
     },
     //This takes the die and damage from your equipped weapon and calculates the overall damage based on the die "roll"
-    damageCalculator: function() {
+    damageCalculator: function () {
         var i;
-        for (i=0; i < weapon.die; i++) {
+        for (i = 0; i < weapon.die; i++) {
             let rollDie = Math.floor(Math.random() * weapon.DMG) + 1;
             damage = damage + rollDie;
-        };
+        }
         console.log(damage); //Console logged just for funzies
     },
-    setBattleLog: function() {
-        var battleID = Math.floor(Date.now()/1000); //Sets unique ID based on current date/time
+    setBattleLog: function () {
+        var battleID = Math.floor(Date.now() / 1000); //Sets unique ID based on current date/time
         //Populate battle log
         battleLog.logID = battleID;
         battleLog.hero = player;
@@ -705,11 +708,11 @@ let Main = {
         battleLog.minionList = killList;
         battleLog.outcome = battleOutcome;
     },
-    autoActionCard: function(cardSelection) {
+    autoActionCard: function (cardSelection) {
         //Fills empty <div> with card info
         emptyDiv.innerHTML = (`
             <div class="overlay">
-                <a href="#" onclick="Main.playCard(`+ cardSelection +`)" class="autoActionCard">
+                <a href="#" onclick="Main.playCard(`+ cardSelection + `)" class="autoActionCard">
                     <h3>` + RandomCard.cardName + `</h3>
                     <img src="img/` + RandomCard.NN + `.png">
                     <p>` + RandomCard.DESC + `</p>
@@ -718,13 +721,13 @@ let Main = {
         `);
         document.body.appendChild(emptyDiv); //Adds HTML element to body
     },
-    removeActionCard: function(unneededElement) {
+    removeActionCard: function (unneededElement) {
         unneededElement.remove(); //Deletes pop-up modal with card
     },
-    getBattleLog: function(battleLog, battleID){
+    getBattleLog: function (battleLog, battleID) {
         var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(battleLog));
         var downloadAnchorNode = document.createElement('a');
-        downloadAnchorNode.setAttribute("href",     dataStr);
+        downloadAnchorNode.setAttribute("href", dataStr);
         downloadAnchorNode.setAttribute("download", "Battle_Log_" + battleID + ".json");
         document.body.appendChild(downloadAnchorNode); // required for firefox
         downloadAnchorNode.click();

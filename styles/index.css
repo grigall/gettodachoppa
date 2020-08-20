@@ -13,6 +13,7 @@ body {
 
 h1 {
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Black Ops One', cursive;
     font-weight: lighter;
     color: rgb(67, 90, 60);
     text-align: center;
@@ -63,10 +64,11 @@ h1 {
 
 .bannerWrapper h1 {
     margin: 0px;
-    padding: 10px 0px 10px 0px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    padding-top: 5px;
+    /* font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif; */
+    font-family: 'Black Ops One', cursive;
     font-weight: lighter;
-    font-size: 40px;
+    font-size: 50px;
     background-color: inherit;
     width: inherit;
     color: black;
@@ -382,7 +384,7 @@ h1 {
     color: grey; /* Change the color */
     display: inline-block; /* Needed to add space between the bullet and the text */
     width: 1em;
-      
+
 }
 
 /*Legal Modal Box*/
