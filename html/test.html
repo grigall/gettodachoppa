@@ -1,24 +1,38 @@
-<div class="enemySection">
-    <div class="enemyWrapper">    
-        <div class="tallyCard">
-            <h3>Kill Count: </h3>
-            <h4>` + killCount + `</h4>
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Get to Da Choppa!</title>
+    </head>
+
+    <body>
+
+        <div id="some-div" class="enemySection">
+            <div class="enemyWrapper">
+                <div class="tallyCard">
+                    <h3>Kill Count: </h3>
+                    <h4>` + killCount + `</h4>
+                </div>
+
+                <div class="enemyCard">
+                    <a href="#" onclick="Main.revealEnemyCard()">Reveal Enemy</a>
+                </div>
+
+                <div class="emptyCard">
+
+                </div>
+            </div>
         </div>
 
         <div class="enemyCard">
-            <a href="#" onclick="Main.revealEnemyCard()">Reveal Enemy</a>
+            <img src="img/${enemy.fileName}.png" alt="enemy image">
+            <h3>` + enemy.NN + `</h3>
+            <p>Health (HP): ` + enemy.HP + `</p>
+            <p>Strength (STR): ` + enemy.STR + `</p>
+            <p>Speed (SPD): ` + enemy.SPD + `</p>
         </div>
 
-        <div class="emptyCard">
-        </div>
-    </div>
-    
-</div>
-
-<div class="enemyCard">
-    <img src="img/` + enemy.fileName + `.png">
-    <h3>` + enemy.NN + `</h3>
-    <p>Health (HP): ` + enemy.HP + `</p>
-    <p>Strength (STR): ` + enemy.STR + `</p>
-    <p>Speed (SPD): ` + enemy.SPD + `</p>
-</div>
+    </body>
+</html>
