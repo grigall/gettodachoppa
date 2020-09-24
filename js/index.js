@@ -18,10 +18,10 @@ function BattleLog (logID, hero, boss, lastEnemy, minionList, outcome) {
     this.minionList = minionList;
     this.outcome = outcome;
 }
+
 let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
 
 let Main = {
-
     //This function initializes both the player and NPC settings
     startSettings: function (classType) {
         this.setCharacter(classType);
@@ -45,20 +45,19 @@ let Main = {
                 player = hero03;
                 break;
         }
-        getPlayer.innerHTML = (`
+        getPlayer.innerHTML = `
         <div class="hero">
-            <h3>` + player.classType + `</h3>
-            <img src="img/` + player.NN + `.png" alt="Dutch">
-            <p>` + player.DESC + `</p>
-        </div>`);
+            <h3>${player.classType}</h3>
+            <img src="img/${player.NN}.png" alt="Dutch">
+            <p>${player.DESC}</p>
+        </div>
+        `
     },
     //This sets the boss and minions
     setEnemies: function () {
-        //Sets the initial kill count to zero
-        killCount = 0;
+        killCount = 0; //Sets the initial kill count to zero
 
-        //Sets the boss and kill target
-        let chooseRandomBoss = Math.floor(Math.random() * 5);
+        let chooseRandomBoss = Math.floor(Math.random() * 5); //Sets the boss and kill target
         switch (chooseRandomBoss) {
             case 0:
                 boss = enemy00;
@@ -101,8 +100,8 @@ let Main = {
         </head>`);
 
         //Replaces the entire body with new structure for battleground
-        replaceWholePage.innerHTML = (
-        `<body class="wholePage">
+        replaceWholePage.innerHTML = `
+        <body class="wholePage">
             <div class="bannerSection">
                 <div class="bannerWrapper">
                     <a href="index.html">
@@ -118,13 +117,13 @@ let Main = {
                     <div class="heroCard">
                         <a href="#" onclick="Main.mouseClickDesc()">
                             <div class="hero">
-                                <img src="img/` + player.NN + `.png">
-                                <h3>` + player.classType + `</h3>
-                                <p>Health (HP): ` + player.HP + `</p>
-                                <p>Strength (STR): ` + player.STR + `</p>
-                                <p>Speed (SPD): ` + player.SPD + `</p>
+                                <img src="img/${player.NN}.png">
+                                <h3>${player.classType}</h3>
+                                <p>Health (HP): ${player.HP}</p>
+                                <p>Strength (STR): ${player.STR}</p>
+                                <p>Speed (SPD): ${player.SPD}</p>
                                 <div id="weapon">
-                                <p>Weapon: ` + weapon.cardName + `</p>
+                                <p>Weapon: ${weapon.cardName}</p>
                                 </div>
                             </div>
                         </a>
@@ -162,9 +161,9 @@ let Main = {
                 <div class="enemyWrapper">
                     <div class="tallyCard">
                         <h3>Kill Count: </h3>
-                        <h4>` + killCount + `</h4>
+                        <h4>${killCount}</h4>
                         <!--<h3>Kill Target: </h3>
-                        <h4>` + killTarget + `</h4>-->
+                        <h4>${killTarget}</h4>-->
                     </div>
 
                     <div class="enemyCard">
@@ -180,7 +179,8 @@ let Main = {
             </div>
 
         <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
-        </body>`);
+        </body>
+        `
     },
     mouseClickDesc: function() {
         alert(player.DESC);
@@ -197,7 +197,6 @@ let Main = {
         } else if (cardOption.cardType == 1) {
             alert('Card Type: Skill\nPlay Phase: ' + cardOption.playPhase + '\nHP: ' + cardOption.HP + '\nSTR: ' + cardOption.STR + '\nSPD: ' + cardOption.SPD);
         }
-
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
@@ -279,9 +278,9 @@ let Main = {
                 getActionCard1.innerHTML = (`
                 <div class="actionCard1">
                     <a href="#" onclick="Main.actionCardClick(card)">
-                    <h3>` + card.cardName + `</h3>
-                    <img src="img/` + card.NN + `.png">
-                    <p>` + card.DESC + `</p>
+                    <h3>${card.cardName}</h3>
+                    <img src="img/${card.NN}.png">
+                    <p>${card.DESC}</p>
                     </a>
                 </div>
                 `);
@@ -291,9 +290,9 @@ let Main = {
                 getActionCard2.innerHTML = (`
                 <div class="actionCard2">
                     <a href="#" onclick="Main.actionCardClick(card2)">
-                    <h3>` + card2.cardName + `</h3>
-                    <img src="img/` + card2.NN + `.png">
-                    <p>` + card2.DESC + `</p>
+                    <h3>${card2.cardName}</h3>
+                    <img src="img/${card2.NN}.png">
+                    <p>${card2.DESC}</p>
                     </a>
                 </div>
                 `);
@@ -496,7 +495,7 @@ if (actionCard.affectPlayer == true
             if (player.HP > 0 && enemy.HP > 0)
             {
                 if (enemy.SPD >= player.SPD) { //If enemy is faster
-                    alert(enemy.NN + ' strikes first for ' + enemy.STR + ' damage!');
+                    alert(`${enemy.NN} strikes first for ${enemy.STR} damage!`);
                     this.enemyAttack();
                     if (player.HP <= 0) {
                         this.loadDefeatScreen();
@@ -536,7 +535,7 @@ if (actionCard.affectPlayer == true
                         }
 
                     } else {
-                        alert(enemy.NN + ' strikes you for ' + enemy.STR + ' damage!')
+                        alert(`${enemy.NN} strikes you for ${nemy.STR} damage!`)
                         this.enemyAttack();
                         if (player.HP <= 0) {
                             this.loadDefeatScreen();
@@ -565,13 +564,13 @@ if (actionCard.affectPlayer == true
         <div class="heroCard">
             <a href="#" onclick="Main.mouseClickDesc()">
                 <div class="hero">
-                    <img src="img/` + player.NN + `.png">
-                    <h3>` + player.classType + `</h3>
-                    <p>Health (HP): ` + player.HP + `</p>
-                    <p>Strength (STR): ` + player.STR + `</p>
-                    <p>Speed (SPD): ` + player.SPD + `</p>
+                    <img src="img/${player.NN}.png">
+                    <h3>${player.classType}</h3>
+                    <p>Health (HP): ${player.HP}</p>
+                    <p>Strength (STR): ${player.STR}</p>
+                    <p>Speed (SPD): ${player.SPD}</p>
                     <div id="weapon">
-                        <p>Weapon: ` + weapon.cardName + `</p>
+                        <p>Weapon: ${weapon.cardName}</p>
                     </div>
                 </div>
             </a>
@@ -583,12 +582,12 @@ if (actionCard.affectPlayer == true
         refreshEnemyCard.innerHTML = (`
                 <div class="enemyCard">
                     <div id="enemyCard">
-                    <img src="img/` + enemy.fileName + `.png">
-                    <h3>` + enemy.NN + `</h3>
+                    <img src="img/${enemy.fileName}.png">
+                    <h3>${enemy.NN}</h3>
                     <div id="enemyCardInside">
-                    <p>Health (HP): ` + enemy.HP + `</p>
-                    <p>Strength (STR): ` + enemy.STR + `</p>
-                    <p>Speed (SPD): ` + enemy.SPD + `</p>
+                    <p>Health (HP): ${enemy.HP}</p>
+                    <p>Strength (STR): ${enemy.STR}</p>
+                    <p>Speed (SPD): ${enemy.SPD}</p>
                     </div>
                     </div>
                 </div>
@@ -643,11 +642,11 @@ if (actionCard.affectPlayer == true
         <div class="tallyCard">
             <div>
             <h3>Kill Count</h3>
-            <h4>` + killCount + `</h4>
+            <h4>${killCount}</h4>
             </div>
             <!--<div>
             <h3>Kill Target: </h3>
-            <h4>` + killTarget + `</h4>
+            <h4>${killTarget}</h4>
             </div>-->
         </div>
         `);
@@ -661,7 +660,7 @@ if (actionCard.affectPlayer == true
         //Defines function for list iteration of Kill List
         function updateKills(item) {
             let updateKillsVar = document.querySelector("#emptyID");
-            updateKillsVar.innerHTML += (`<p>` + item + `</p>`);
+            updateKillsVar.innerHTML += (`<p>${item}</p>`);
         }
 
         //Adds current minion name to kill list
@@ -677,13 +676,13 @@ if (actionCard.affectPlayer == true
     playerAttack: function () {
         if (weapon == noWeapon) {
             enemy.HP = enemy.HP - player.STR;
-            alert('You strike ' + enemy.NN + ' for ' + player.STR + ' damage!');
+            alert(`You strike ${enemy.NN} for ${player.STR} damage!`);
             this.refreshEnemyCard();
             this.refreshPlayerCard();
         } else {
             this.damageCalculator();
             enemy.HP = enemy.HP - (player.STR + damage);
-            alert('You strike ' + enemy.NN + ' with your ' + weapon.cardName + ' for ' + (player.STR + damage) + ' damage!');
+            alert(`You strike ${enemy.NN} with your ${weapon.cardName} for ${(player.STR + damage)} damage!`);
             this.refreshEnemyCard();
             this.refreshPlayerCard();
             damage = 0;
@@ -712,10 +711,10 @@ if (actionCard.affectPlayer == true
         //Fills empty <div> with card info
         emptyDiv.innerHTML = (`
             <div class="overlay">
-                <a href="#" onclick="Main.playCard(`+ cardSelection + `)" class="autoActionCard">
-                    <h3>` + RandomCard.cardName + `</h3>
-                    <img src="img/` + RandomCard.NN + `.png">
-                    <p>` + RandomCard.DESC + `</p>
+                <a href="#" onclick="Main.playCard(${cardSelection})" class="autoActionCard">
+                    <h3>${RandomCard.cardName}</h3>
+                    <img src="img/${RandomCard.NN}.png">
+                    <p>${RandomCard.DESC}</p>
                 </a>
             </div>
         `);
