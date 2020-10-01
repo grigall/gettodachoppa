@@ -84,20 +84,10 @@ let Main = {
     BattleGround: function () {
         weapon = noWeapon; //Sets default weapon to None
         cardCount = 0; //Sets action card count to zero
-        let replaceStyleSheet = document.querySelector(".mainHeader");
+        let newStyle = document.getElementById('style')
         let replaceWholePage = document.querySelector(".wholePage");
-
         //Replaces the header information for the page
-        replaceStyleSheet.innerHTML = (
-        `<head class="mainHeader">
-            <meta charset="utf-8">
-            <title>Get to Da Choppa!</title>
-            <link rel="stylesheet" href="./styles/battleground.css">
-            <script src="js/index.js"></script>
-            <script src="js/player.js"></script>
-            <script src="js/enemy.js"></script>
-            <script src="js/cards.js"></script>
-        </head>`);
+        newStyle.setAttribute('href', './styles/battleground.css')
 
         //Replaces the entire body with new structure for battleground
         replaceWholePage.innerHTML = `
