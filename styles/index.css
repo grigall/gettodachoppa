@@ -1,5 +1,65 @@
 @import './modal.css';
 
+@media only screen and (min-width: 768px) {
+
+    #page_header {
+        margin: 0px 0px 20px 0px;
+        padding: 5px;
+        background-color: rgb(67, 90, 60);
+        height: auto;
+        max-height: 120px;
+        width: 100%;
+        text-align: center;
+        font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
+        font-weight: lighter;
+        font-size: 1.5rem;
+    }
+
+    .introSection {
+        margin: 20px;
+        padding: 0px;
+        background-color: #555;
+        width: 90%;
+        border: solid 5px black;
+        overflow: hidden;
+    }
+    
+    .introWrapper {
+        display: inline-flex;
+        flex-direction: row;
+        background-color: #555;
+        margin: 0px;
+        padding: 0px;
+        height: 180px;
+        width: 720px;
+        border: solid 5px black;
+        border-radius: 20px;
+    }
+
+    .introSection img {
+        height: auto;
+        max-width: 320px;
+        border-radius: 15px 0px 0px 15px;
+    }
+
+    .introWrapper p {
+        display: flex;
+        text-align: justify;
+        align-items: center;
+        font-family: 'Oswald', sans-serif;
+        font-weight: 200;
+        font-size: 18px;
+        color: #222;
+        background-color: #555;
+        width: 90%;
+        height: 180px;
+        margin: 0px;
+        padding: 0px 20px 0px 20px;
+        border-radius: 0px 15px 15px 0px;
+    }
+    
+}
+
 p {
     font-family: 'Oswald', sans-serif;
     font-family: 'Iceberg', Arial, Helvetica, sans-serif;
@@ -17,14 +77,14 @@ body {
 
 #page_header {
     margin: 0px;
-    padding: 5px;
+    padding: 0px;
     background-color: rgb(67, 90, 60);
-    height: 70px;
+    height: 40px;
     width: 100%;
     text-align: center;
     font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
     font-weight: lighter;
-    font-size: 2rem;
+    font-size: auto;
 }
 
 h1 {
@@ -36,57 +96,66 @@ h1 {
 }
 
 /* This defines the horizontal wrapper for the Intro*/
+
 .introSection {
-    margin: 20px 15%;
-    display: flex;
-    justify-content: flex-end;
-    background-color: #555;
-    min-width: 720px;
-    max-height: 35vh;
-    border: solid 5px black;
-    border-radius: 20px;
-    overflow: hidden;
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
 }
 
 .introSection img {
-    height: 100%;
-}
-
-.introWrapper {
-    display: flex;
-    padding: 20px;
-    min-width: 40%;
-}
-
-.introWrapper p {
-    text-align: justify;
-    font-size: 1.5em;
-    color: black;
     margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: auto;
+}
+
+.introSection p {
+    text-align: justify;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    font-size: 18px;
+    color: #222;
+    background-color: #555;
+    width: -1rem;
+    height: auto;
+    margin: 0px;
+    padding: 10px 15px;
 }
 
 /* This defines the horizontal wrapper for the buttons*/
 .buttonSection {
+    margin: 10px 0px 0px 0px;
     padding: 0px;
     width: 100%;
     display: inline-flex;
     justify-content: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    align-items: center;
 }
 
 .buttonSection a {
+    margin: 10px;
+    padding: 10px;
+    width: 120px;
+    height: 120px;
+    text-decoration: none;
+    color: black;
+    font-family: 'Black Ops One', cursive;
+    font-weight: lighter;
+    font-size: 30px;
+    background-color: #555;
     display: flex;
     align-items: center;
-    text-decoration: none;
-    height: 60px;
-    color: black;
-    background-color: #555;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
-    font-weight: lighter;
-    font-size: 28px;
-    padding: 10px 20px 10px 20px;
-    margin: 0px 10px 0px 10px;
-    border-radius: 15px;
-    border: solid 2px black;
+    text-align: center;
 }
 
 .buttonSection a:hover {
