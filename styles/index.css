@@ -1,15 +1,11 @@
 @import './modal.css';
 
-
-
 * {
-    margin: 0rem;
-    padding: 0rem;
-    font-size: 18px;
+    margin: 0;
 }
 
 p {
-    font-family: 'Oswald', sans-serif;
+    /* font-family: 'Oswald', sans-serif; */
     font-family: 'Iceberg', Arial, Helvetica, sans-serif;
 }
 
@@ -19,8 +15,6 @@ h1 {
 }
 
 body {
-    margin: 0px;
-    padding: 0px;
     width: 100%;
     background-color: #222;
     display: flex;
@@ -29,77 +23,60 @@ body {
 }
 
 #page_header {
-    margin: 0px;
-    padding: 0px;
-    height: relative;
     width: 100%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    align-content: center;
+    justify-content: center;
+    background-color: rgb(67, 90, 60);
+    box-shadow: 0px 0px 6px;
+    z-index: 1;
 }
 
 #page_header h1 {
-    font-size: 4rem;
-    text-align: center;
-    margin: 0px;
-    padding: 0px;
-    background-color: rgb(67, 90, 60);
-    height: relative;
-    width: 100%;
+    font-size: 3rem;
 }
 
 /* This defines the horizontal wrapper for the Intro*/
 .introSection {
-    margin: 1rem 0rem 1rem 0rem;
-    padding: 0px;
     width: 100%;
     height: auto;
-    display: inline-flex;
+    display: flex;
     flex-direction: row;
     justify-content: center;
-    align-content: center;
     align-items: center;
     background-color: black;
+    overflow: hidden;
 }
 
 .introSection img {
-    margin: 0rem;
-    padding: 0rem;
-    width: relative;
-    height: 16rem;
-
+    width: 40vw;
+    height: 100%;
+    max-height: 20rem;
 }
 
 .introSection p {
-    margin: 0rem;
-    padding: 0rem 1.4rem;
+    padding: 24px;
     text-align: justify;
-    font-weight: 300;
     color: #222;
     background-color: #555;
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 16rem;
-    font-size: 1.2rem;
+    height: 100%;
+    font-size: 1.5rem;
 }
 
 /* This defines the horizontal wrapper for the buttons*/
 .buttonSection {
-    margin: 0rem;
-    padding: 0px;
+    margin: 2rem 0rem;
     width: 100%;
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    flex-direction: row;
     flex-wrap: wrap;
-    align-content: center;
-    align-items: center;
 }
 
 .buttonSection a {
-    margin: 0.55rem;
+    margin: 10px 4vw;
     padding: 0.55rem;
     width: 6.5rem;
     height: 6.5rem;
@@ -112,6 +89,7 @@ body {
     display: flex;
     align-items: center;
     text-align: center;
+    border-radius: 1rem;
 }
 
 .buttonSection a:hover {
@@ -122,45 +100,46 @@ body {
 
 #page_footer {
     color: #555;
-    position: absolute;
-    bottom: 0;
     width: 100%;
-    height: relative;
     text-align: center;
-}
-
-#page_footer p {
     font-family: 'Roboto condensed';
     font-size: 0.8rem;
+    margin: 10px;
+    position: absolute;
+    bottom: 0;
 }
 
-@media only screen and (max-width: 768px) {
-    
-    #page_header h1 {
-        font-size: 1.5rem;
+@media only screen and (max-width: 812px) {
 
+    #page_header h1 {
+        font-size: 9vw;
+        white-space: nowrap;
+        height: auto;
     }
 
     .introSection {
-        margin: 0rem 0rem 1rem 0rem;
         flex-direction: column;
     }
 
     .introSection img {
-        max-height: 12rem;
-        width: auto;
+        width: 24rem;
+        height: auto;
     }
 
     .introSection p {
-        padding: 1rem 1rem;
-        font-size: auto;
+        padding: 1rem;
         height: auto;
-
+        font-size: 18px;
     }
-    
+
     .buttonSection a {
         width: 5rem;
         height: 5rem;
         font-size: 1.2rem;
+        margin: 10px 22px;
+    }
+
+    #page_footer {
+        position: relative;
     }
 }
