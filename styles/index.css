@@ -1,68 +1,21 @@
 @import './modal.css';
 
-@media only screen and (min-width: 768px) {
 
-    #page_header {
-        margin: 0px 0px 20px 0px;
-        padding: 5px;
-        background-color: rgb(67, 90, 60);
-        height: auto;
-        max-height: 120px;
-        width: 100%;
-        text-align: center;
-        font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
-        font-weight: lighter;
-        font-size: 1.5rem;
-    }
 
-    .introSection {
-        margin: 20px;
-        padding: 0px;
-        background-color: #555;
-        width: 90%;
-        border: solid 5px black;
-        overflow: hidden;
-    }
-    
-    .introWrapper {
-        display: inline-flex;
-        flex-direction: row;
-        background-color: #555;
-        margin: 0px;
-        padding: 0px;
-        height: 180px;
-        width: 720px;
-        border: solid 5px black;
-        border-radius: 20px;
-    }
-
-    .introSection img {
-        height: auto;
-        max-width: 320px;
-        border-radius: 15px 0px 0px 15px;
-    }
-
-    .introWrapper p {
-        display: flex;
-        text-align: justify;
-        align-items: center;
-        font-family: 'Oswald', sans-serif;
-        font-weight: 200;
-        font-size: 18px;
-        color: #222;
-        background-color: #555;
-        width: 90%;
-        height: 180px;
-        margin: 0px;
-        padding: 0px 20px 0px 20px;
-        border-radius: 0px 15px 15px 0px;
-    }
-    
+* {
+    margin: 0rem;
+    padding: 0rem;
+    font-size: 18px;
 }
 
 p {
     font-family: 'Oswald', sans-serif;
     font-family: 'Iceberg', Arial, Helvetica, sans-serif;
+}
+
+h1 {
+    font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
+    font-weight: lighter;
 }
 
 body {
@@ -78,60 +31,63 @@ body {
 #page_header {
     margin: 0px;
     padding: 0px;
-    background-color: rgb(67, 90, 60);
-    height: 40px;
+    height: relative;
     width: 100%;
-    text-align: center;
-    font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
-    font-weight: lighter;
-    font-size: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
 
-h1 {
-    font-family: 'Black Ops One', Impact, 'Arial Narrow Bold', sans-serif;
-    font-weight: lighter;
+#page_header h1 {
+    font-size: 4rem;
     text-align: center;
     margin: 0px;
-    white-space: nowrap;
+    padding: 0px;
+    background-color: rgb(67, 90, 60);
+    height: relative;
+    width: 100%;
 }
 
 /* This defines the horizontal wrapper for the Intro*/
-
 .introSection {
-    margin: 0px;
+    margin: 1rem 0rem 1rem 0rem;
     padding: 0px;
     width: 100%;
     height: auto;
     display: inline-flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
     align-content: center;
     align-items: center;
+    background-color: black;
 }
 
 .introSection img {
-    margin: 0px;
-    padding: 0px;
-    width: 100%;
-    height: auto;
+    margin: 0rem;
+    padding: 0rem;
+    width: relative;
+    height: 16rem;
+
 }
 
 .introSection p {
+    margin: 0rem;
+    padding: 0rem 1.4rem;
     text-align: justify;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 200;
-    font-size: 18px;
+    font-weight: 300;
     color: #222;
     background-color: #555;
-    width: -1rem;
-    height: auto;
-    margin: 0px;
-    padding: 10px 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16rem;
+    font-size: 1.2rem;
 }
 
 /* This defines the horizontal wrapper for the buttons*/
 .buttonSection {
-    margin: 10px 0px 0px 0px;
+    margin: 0rem;
     padding: 0px;
     width: 100%;
     display: inline-flex;
@@ -143,15 +99,15 @@ h1 {
 }
 
 .buttonSection a {
-    margin: 10px;
-    padding: 10px;
-    width: 120px;
-    height: 120px;
+    margin: 0.55rem;
+    padding: 0.55rem;
+    width: 6.5rem;
+    height: 6.5rem;
     text-decoration: none;
     color: black;
     font-family: 'Black Ops One', cursive;
     font-weight: lighter;
-    font-size: 30px;
+    font-size: 1.6rem;
     background-color: #555;
     display: flex;
     align-items: center;
@@ -171,6 +127,40 @@ h1 {
     width: 100%;
     height: relative;
     text-align: center;
+}
+
+#page_footer p {
     font-family: 'Roboto condensed';
-    font-size: 14px;
+    font-size: 0.8rem;
+}
+
+@media only screen and (max-width: 768px) {
+    
+    #page_header h1 {
+        font-size: 1.5rem;
+
+    }
+
+    .introSection {
+        margin: 0rem 0rem 1rem 0rem;
+        flex-direction: column;
+    }
+
+    .introSection img {
+        max-height: 12rem;
+        width: auto;
+    }
+
+    .introSection p {
+        padding: 1rem 1rem;
+        font-size: auto;
+        height: auto;
+
+    }
+    
+    .buttonSection a {
+        width: 5rem;
+        height: 5rem;
+        font-size: 1.2rem;
+    }
 }
