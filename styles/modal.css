@@ -206,15 +206,9 @@
 }
 
 .heroWrapper {
-    margin: 0rem;
-    padding: 0rem;
-    width: 100%;
     min-width: 21rem;
-    height: relative;
-    aspect-ratio: 66%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
     background-color: grey;
 }
@@ -223,9 +217,6 @@
     margin: 0rem;
     padding: 0rem;
     text-decoration: none;
-    width: 100%;
-    height: 100%;
-    background-color: transparent;
 }
 
 .heroWrapper a:hover {
@@ -233,14 +224,9 @@
 }
 
 .hero {
-    margin: 0rem;
     padding: 0rem;
-    width: 100%;
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
 }
 
 .hero h3 {
@@ -250,7 +236,6 @@
     color: black;
     text-align: center;
     padding: 0.2rem 0rem;
-    margin: 0rem;
     background-color: #777;
     border-right: solid 0.1rem whitesmoke;
     width: 100%;
