@@ -176,7 +176,6 @@ let Main = {
         alert(player.DESC);
     },
     actionCardClick: function(cardOption) {
-
         //Checks what the card type is and displays a different set of stats depending on what it is
         if (cardCount >= cardLimit) {
             alert('You cannot play more than two cards per round.');
@@ -190,66 +189,29 @@ let Main = {
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
-        let chooseRandomCard = Math.floor(Math.random() * 19);
-        switch (chooseRandomCard) {
-            case 0:
-                RandomCard = skillCard01; //First Aid
-            break;
-            case 1:
-                RandomCard = weaponCard01;
-            break;
-            case 2:
-                RandomCard = weaponCard02;
-            break;
-            case 3:
-                RandomCard = weaponCard03;
-            break;
-            case 4:
-                RandomCard = actionCard01; //Let off some steam
-            break;
-            case 5:
-                RandomCard = weaponCard04;
-            break;
-            case 6:
-                RandomCard = skillCard02; //Super Syrum
-            break;
-            case 7:
-                RandomCard = skillCard01; //First Aid
-            break;
-            case 8:
-                RandomCard = actionCard02; //Nice Night for a Walk
-            break;
-            case 9:
-                RandomCard = skillCard03; //Good horse
-            break;
-            case 10:
-                RandomCard = skillCard04 //Inconvenient truth
-            break;
-            case 11:
-                RandomCard = skillCard05 //STR
-            break;
-            case 12:
-                RandomCard = skillCard06 //SPD
-            break;
-            case 13:
-                RandomCard = skillCard07 //Minor Explosion
-            break;
-            case 14:
-                RandomCard = skillCard05 //STR
-            break;
-            case 15:
-                RandomCard = skillCard05 //STR
-            break;
-            case 16:
-                RandomCard = skillCard06 //SPD
-            break;
-            case 17:
-                RandomCard = skillCard08 //HP
-            break;
-            case 18:
-                RandomCard = skillCard09 //Exploding vehicle
-            break;
-        }
+        const deck = [
+            actionCard01,//Let off some steam
+            actionCard02,//Nice Night for a Walk
+            weaponCard01,
+            weaponCard02,
+            weaponCard03,
+            weaponCard04,
+            skillCard01,//First Aid
+            skillCard01,//First Aid
+            skillCard02,//Super Syrum
+            skillCard03,//Good horse
+            skillCard04,//Inconvenient truth
+            skillCard05,//STR
+            skillCard05,//STR
+            skillCard05,//STR
+            skillCard06,//SPD
+            skillCard06,//SPD
+            skillCard07,//Minor Explosion
+            skillCard08,//HP
+            skillCard09,//Exploding vehicle
+        ]
+        const chooseRandomCard = Math.floor(Math.random() * deck.length);
+        RandomCard = deck[chooseRandomCard];
     },
     refreshActionCard: function(cardSelection) {
         if (enemy == null) {

@@ -198,7 +198,7 @@ body {
 }
 
 .actionCard1 a {
-    background-image: url('img/ac_bg2.png');
+    background-image: url('../img/ac_bg2.png');
     background-size: cover;
     background-position: center;
     text-decoration: none;
@@ -260,7 +260,7 @@ body {
 }
 
 .actionCard2 a {
-    background-image: url('img/ac_bg2.png');
+    background-image: url('../img/ac_bg2.png');
     background-size: cover;
     background-position: center;
     text-decoration: none;
@@ -437,7 +437,7 @@ body {
     border-radius: 5px;
     margin: 8px 0px 4px 0px;
     padding: 0px;
-    
+
 }
 
 #enemyCard h3 {
@@ -770,7 +770,7 @@ body {
     width: 180px;
     height: 240px;
     z-index: 101;
-    background-image: url('img/ac_bg2.png');
+    background-image: url('../img/ac_bg2.png');
     background-size: cover;
     background-position: center;
     text-decoration: none;
