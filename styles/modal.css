@@ -190,7 +190,7 @@
     padding: 0rem;
 }
 
-.cardWrapper {
+#cardWrapper {
     margin: 0rem;
     padding: 0rem;
     display: flex;
