@@ -56,30 +56,12 @@ let Main = {
     //This sets the boss and minions
     setEnemies: function () {
         killCount = 0; //Sets the initial kill count to zero
+        const bossList = [enemy00, enemy01, enemy02, enemy03, enemy04];
 
-        let chooseRandomBoss = Math.floor(Math.random() * 5); //Sets the boss and kill target
-        switch (chooseRandomBoss) {
-            case 0:
-                boss = enemy00;
-                killTarget = (boss.MIN + 1);
-            break;
-            case 1:
-                boss = enemy01;
-                killTarget = (boss.MIN + 1);
-            break;
-            case 2:
-                boss = enemy02;
-                killTarget = (boss.MIN + 1);
-            break;
-            case 3:
-                boss = enemy03;
-                killTarget = (boss.MIN + 1);
-            break;
-            case 4:
-                boss = enemy04;
-                killTarget = (boss.MIN + 1);
-            break;
-        }
+        let chooseRandomBoss = Math.floor(Math.random() * bossList.length);
+        //Sets the boss and kill target
+        boss = bossList[chooseRandomBoss];
+        killTarget = (boss.MIN + 1);
     },
     BattleGround: function () {
         weapon = noWeapon; //Sets default weapon to None
@@ -138,7 +120,7 @@ let Main = {
 
             <!--This section holds the action buttons-->
             <br>
-            <div class="buttonSection">
+            <div id="buttonSection">
                 <div class="buttonWrapper">
                     <a href="#" onclick="Main.attackButton()">Attack</a>
                     <a href="#" onclick="Main.playCard(1)">Play Card</a>
