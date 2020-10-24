@@ -19,6 +19,11 @@ function BattleLog (logID, hero, boss, lastEnemy, minionList, outcome) {
     this.outcome = outcome;
 }
 
+// Helper function for randomizing decks
+function chooseRandom(arr) {
+    return Math.floor(Math.random() * arr.length);
+}
+
 let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
 
 let Main = {
@@ -56,11 +61,9 @@ let Main = {
     //This sets the boss and minions
     setEnemies: function () {
         killCount = 0; //Sets the initial kill count to zero
-        const bossList = [enemy00, enemy01, enemy02, enemy03, enemy04];
-
-        let chooseRandomBoss = Math.floor(Math.random() * bossList.length);
+        const bossList = [enemy00, enemy01, enemy02, enemy03, enemy04]
         //Sets the boss and kill target
-        boss = bossList[chooseRandomBoss];
+        boss = bossList[chooseRandom(bossList)];
         killTarget = (boss.MIN + 1);
     },
     BattleGround: function () {
@@ -192,8 +195,7 @@ let Main = {
             skillCard08,//HP
             skillCard09,//Exploding vehicle
         ]
-        const chooseRandomCard = Math.floor(Math.random() * deck.length);
-        RandomCard = deck[chooseRandomCard];
+        RandomCard = deck[chooseRandom(deck)];
     },
     refreshActionCard: function(cardSelection) {
         if (enemy == null) {
@@ -370,37 +372,10 @@ if (actionCard.affectPlayer == true
     },
     loadMinion: function() {
         //Chooses random minion if minion count is not zero
-        let chooseRandomMinion = Math.floor(Math.random() * 8); //This number will change based on how many minions are available in the switch statement
-        switch (chooseRandomMinion) {
-            case 0:
-                minion = enemy10;
-            break;
-            case 1:
-                minion = enemy11;
-            break;
-            case 2:
-                minion = enemy12;
-            break;
-            case 3:
-                minion = enemy13;
-            break;
-            case 4:
-                minion = enemy14;
-            break;
-            case 5:
-                minion = enemy15;
-            break;
-            case 6:
-                minion = enemy16;
-            break;
-            case 7:
-                minion = enemy17;
-            break;
-            case 8:
-                minion = enemy18;
-            break;
-        }
-        //Insert logic here to ensure minion does not have negative health
+        const minions = [enemy10, enemy11, enemy12, enemy13, enemy14, enemy15, enemy16, enemy17, enemy18]
+        minion = minions[chooseRandom(minions)]
+
+        //TODO: Insert logic here to ensure minion does not have negative health
     },
     revealEnemyCard: function() {
 
