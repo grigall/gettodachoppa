@@ -19,12 +19,12 @@ function BattleLog (logID, hero, boss, lastEnemy, minionList, outcome) {
     this.outcome = outcome;
 }
 
+let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
+
 // Helper function for randomizing decks
 function chooseRandom(arr) {
     return Math.floor(Math.random() * arr.length);
 }
-
-let battleLog = new BattleLog (null, null, null, null, null); //Empty battle log
 
 let Main = {
     //This function initializes both the player and NPC settings
@@ -38,16 +38,16 @@ let Main = {
         let getPlayer = document.querySelector(".hero");
         switch (classType) {
             case "Dutch":
-                player = hero00;
+                player = heroes[0];
                 break;
             case "Douglas Quaid":
-                player = hero01;
+                player = heroes[1];
                 break;
             case "Harry Tasker":
-                player = hero02;
+                player = heroes[2];
                 break;
             case "John Matrix":
-                player = hero03;
+                player = heroes[3];
                 break;
         }
         getPlayer.innerHTML = `
@@ -61,7 +61,6 @@ let Main = {
     //This sets the boss and minions
     setEnemies: function () {
         killCount = 0; //Sets the initial kill count to zero
-        const bossList = [enemy00, enemy01, enemy02, enemy03, enemy04]
         //Sets the boss and kill target
         boss = bossList[chooseRandom(bossList)];
         killTarget = (boss.MIN + 1);
@@ -194,7 +193,7 @@ let Main = {
             skillCard07,//Minor Explosion
             skillCard08,//HP
             skillCard09,//Exploding vehicle
-        ]
+        ];
         RandomCard = deck[chooseRandom(deck)];
     },
     refreshActionCard: function(cardSelection) {
@@ -246,18 +245,15 @@ let Main = {
             }
             this.removeActionCard(emptyDiv);
         }
-
         //Assigns local card variable based off cardNumber argument
-if (cardCount >= cardLimit) {
-    alert('You cannot play more than two cards per round.');
-        } else if (cardNumber == 1) {
-            actionCard = card;
-        } else if (cardNumber == 2) {
-            actionCard = card2;
-        }
-if (actionCard.affectPlayer == true
-    && actionCard.affectBoss == true
-    && actionCard.affectMinion == true) {
+        if (cardCount >= cardLimit) {
+            alert('You cannot play more than two cards per round.');
+                } else if (cardNumber == 1) {
+                    actionCard = card;
+                } else if (cardNumber == 2) {
+                    actionCard = card2;
+                }
+        if (actionCard.affectPlayer == true && actionCard.affectBoss == true && actionCard.affectMinion == true) {
             player.HP = player.HP + actionCard.HP;
             player.STR = player.STR + actionCard.STR;
             player.SPD = player.SPD + actionCard.SPD;
@@ -372,13 +368,11 @@ if (actionCard.affectPlayer == true
     },
     loadMinion: function() {
         //Chooses random minion if minion count is not zero
-        const minions = [enemy10, enemy11, enemy12, enemy13, enemy14, enemy15, enemy16, enemy17, enemy18]
         minion = minions[chooseRandom(minions)]
 
         //TODO: Insert logic here to ensure minion does not have negative health
     },
     revealEnemyCard: function() {
-
         //Checks victory condition
         if (killCount == killTarget) {
             this.loadVictoryScreen();
@@ -395,12 +389,10 @@ if (actionCard.affectPlayer == true
         }
         this.refreshEnemyCard();
     },
-
     //This section contains the main game logic
     attackButton: function() {
         cardCount = 0;
-        while (killCount < killTarget)
-        {
+        while (killCount < killTarget) {
             if (player.HP > 0 && enemy.HP > 0)
             {
                 if (enemy.SPD >= player.SPD) { //If enemy is faster
@@ -442,9 +434,8 @@ if (actionCard.affectPlayer == true
                             this.revealEnemyCard();
                             break;
                         }
-
                     } else {
-                        alert(`${enemy.NN} strikes you for ${nemy.STR} damage!`)
+                        alert(`${enemy.NN} strikes you for ${enemy.STR} damage!`)
                         this.enemyAttack();
                         if (player.HP <= 0) {
                             this.loadDefeatScreen();
@@ -453,14 +444,12 @@ if (actionCard.affectPlayer == true
                         break;
                     }
                 }
-
             } else if (player.HP <= 0) {
                 this.loadDefeatScreen();
                 break;
             } else {
                 break;
             }
-
         }
         if (killCount == killTarget) {
             this.loadVictoryScreen();
@@ -470,36 +459,36 @@ if (actionCard.affectPlayer == true
     refreshPlayerCard: function () {
         let refreshPlayerCard = document.querySelector(".heroCard");
         refreshPlayerCard.innerHTML = (`
-        <div class="heroCard">
-            <a href="#" onclick="Main.mouseClickDesc()">
-                <div class="hero">
-                    <img src="img/${player.NN}.png">
-                    <h3>${player.classType}</h3>
-                    <p>Health (HP): ${player.HP}</p>
-                    <p>Strength (STR): ${player.STR}</p>
-                    <p>Speed (SPD): ${player.SPD}</p>
-                    <div id="weapon">
-                        <p>Weapon: ${weapon.cardName}</p>
+            <div class="heroCard">
+                <a href="#" onclick="Main.mouseClickDesc()">
+                    <div class="hero">
+                        <img src="img/${player.NN}.png">
+                        <h3>${player.classType}</h3>
+                        <p>Health (HP): ${player.HP}</p>
+                        <p>Strength (STR): ${player.STR}</p>
+                        <p>Speed (SPD): ${player.SPD}</p>
+                        <div id="weapon">
+                            <p>Weapon: ${weapon.cardName}</p>
+                        </div>
                     </div>
-                </div>
-            </a>
-        </div>
+                </a>
+            </div>
         `);
     },
     refreshEnemyCard: function () {
         let refreshEnemyCard = document.querySelector(".enemyCard");
         refreshEnemyCard.innerHTML = (`
-                <div class="enemyCard">
-                    <div id="enemyCard">
-                    <img src="img/${enemy.fileName}.png">
-                    <h3>${enemy.NN}</h3>
-                    <div id="enemyCardInside">
-                    <p>Health (HP): ${enemy.HP}</p>
-                    <p>Strength (STR): ${enemy.STR}</p>
-                    <p>Speed (SPD): ${enemy.SPD}</p>
-                    </div>
-                    </div>
+            <div class="enemyCard">
+                <div id="enemyCard">
+                <img src="img/${enemy.fileName}.png">
+                <h3>${enemy.NN}</h3>
+                <div id="enemyCardInside">
+                <p>Health (HP): ${enemy.HP}</p>
+                <p>Strength (STR): ${enemy.STR}</p>
+                <p>Speed (SPD): ${enemy.SPD}</p>
                 </div>
+                </div>
+            </div>
         `);
     },
     loadDefeatScreen: function () {
@@ -519,7 +508,7 @@ if (actionCard.affectPlayer == true
             </div>
             <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
             </body>
-            `);
+        `);
         battleOutcome = 0;
         this.setBattleLog();
     },
@@ -540,7 +529,7 @@ if (actionCard.affectPlayer == true
                 </div>
             <footer class="footer"><p>Copyright &copy 2020 AngryAustrian Enterprises</p></footer>
             </body>
-            `);
+        `);
         battleOutcome = 1;
         this.setBattleLog();
     },
@@ -548,16 +537,16 @@ if (actionCard.affectPlayer == true
         killCount++;
         let tallyCard = document.querySelector(".tallyCard");
         tallyCard.innerHTML = (`
-        <div class="tallyCard">
-            <div>
-            <h3>Kill Count</h3>
-            <h4>${killCount}</h4>
+            <div class="tallyCard">
+                <div>
+                <h3>Kill Count</h3>
+                <h4>${killCount}</h4>
+                </div>
+                <!--<div>
+                <h3>Kill Target: </h3>
+                <h4>${killTarget}</h4>
+                </div>-->
             </div>
-            <!--<div>
-            <h3>Kill Target: </h3>
-            <h4>${killTarget}</h4>
-            </div>-->
-        </div>
         `);
         this.refreshKillList();
     },
@@ -571,12 +560,8 @@ if (actionCard.affectPlayer == true
             let updateKillsVar = document.querySelector("#emptyID");
             updateKillsVar.innerHTML += (`<p>${item}</p>`);
         }
-
-        //Adds current minion name to kill list
-        killList.push(minion.NN);
-
-        //Iterates through kill list
-        killList.forEach(updateKills);
+        killList.push(minion.NN); //Adds current minion name to kill list
+        killList.forEach(updateKills); //Iterates through kill list
     },
     enemyAttack: function () {
         player.HP = player.HP - enemy.STR;
