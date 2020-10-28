@@ -28,28 +28,16 @@ function chooseRandom(arr) {
 
 let Main = {
     //This function initializes both the player and NPC settings
-    startSettings: function (classType) {
-        this.setCharacter(classType);
+    startSettings: function (heroName) {
+        this.setCharacter(heroName);
         this.setEnemies();
         this.BattleGround();
     },
     //This sets the player character
-    setCharacter: function (classType) {
+    setCharacter: function (heroName) {
+        player = heroes.find(hero => hero.classType == heroName);
         let getPlayer = document.querySelector(".hero");
-        switch (classType) {
-            case "Dutch":
-                player = heroes[0];
-                break;
-            case "Douglas Quaid":
-                player = heroes[1];
-                break;
-            case "Harry Tasker":
-                player = heroes[2];
-                break;
-            case "John Matrix":
-                player = heroes[3];
-                break;
-        }
+
         getPlayer.innerHTML = `
         <div class="hero">
             <h3>${player.classType}</h3>
