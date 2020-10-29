@@ -161,28 +161,7 @@ let Main = {
     },
     drawActionCard: function() {
         //Selects a random card from the "deck"
-        const deck = [
-            actionCard01,//Let off some steam
-            actionCard02,//Nice Night for a Walk
-            weaponCard01,
-            weaponCard02,
-            weaponCard03,
-            weaponCard04,
-            skillCard01,//First Aid
-            skillCard01,//First Aid
-            skillCard02,//Super Syrum
-            skillCard03,//Good horse
-            skillCard04,//Inconvenient truth
-            skillCard05,//STR
-            skillCard05,//STR
-            skillCard05,//STR
-            skillCard06,//SPD
-            skillCard06,//SPD
-            skillCard07,//Minor Explosion
-            skillCard08,//HP
-            skillCard09,//Exploding vehicle
-        ];
-        RandomCard = deck[chooseRandom(deck)];
+        RandomCard = playerDeck[chooseRandom(playerDeck)];
     },
     refreshActionCard: function(cardSelection) {
         if (enemy == null) {
